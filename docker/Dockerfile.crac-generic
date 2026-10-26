@@ -1,0 +1,6 @@
+ARG BASE_IMAGE=gretl-crema-linux:experiment
+FROM ${BASE_IMAGE}
+COPY docker/ /app/bench/
+COPY docker/training/ /app/training/
+RUN /opt/jdk25/bin/javac -cp '/app/runtime/runner.jar:/app/runtime/lib/*' -d /app/support/classes /app/bench/GenericCracLauncher.java \
+    && /opt/jdk25/bin/java -cp '/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/*' ch.so.agi.gretl.crema.compiler.CompilerMain /app/training/runtimeWarmup.groovy --output /app/training/runtimeWarmup.jar

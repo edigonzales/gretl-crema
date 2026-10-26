@@ -23,6 +23,10 @@ def command(mode, job):
             '--db', '/work/measured-db', '--param', 'jahr=2026' if job == 'h2' else 'iterations=100000']
     if mode in ('interpreter', 'ristretto'):
         return ['/native/' + mode + '/gretl-crema', '-Djava.home=/opt/graal', *HEAP, *args]
+    if mode == 'crac_generic_bytecode':
+        args = [arg.replace('/app/jobs/', '/post-jobs/') for arg in args]
+        return ['/opt/crac25/bin/java', '-XX:CRaCEngine=warp', '-XX:CRaCRestoreFrom=/generic-checkpoint/runtime',
+                'ch.so.agi.gretl.crema.runner.Main', *args]
     if mode.startswith('crac_restore_'):
         return ['/opt/crac25/bin/java', '-XX:CRaCEngine=warp', '-XX:CRaCRestoreFrom=/checkpoint/' + job + ('-source' if source else '-bytecode')]
     if mode.startswith('crac_cold_'):
@@ -66,5 +70,7 @@ if __name__ == '__main__':
               'passed': process.returncode == 0 and marker in process.stdout and 'job.status=SUCCEEDED' in process.stdout}
     if mode.startswith('crac_restore_'):
         result['passed'] = result['passed'] and 'CRAC_RESTORE_OK' in process.stdout
+    if mode == 'crac_generic_bytecode':
+        result['passed'] = result['passed'] and 'Restore successful!' in process.stdout
     print(json.dumps(result, ensure_ascii=False), flush=True)
     sys.exit(0 if result['passed'] else 1)

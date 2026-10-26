@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "databases": [
+    {
+      "file": "interpreter-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "ristretto-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk25_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk27_aot_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk28_aot_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "crac_cold_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "crac_restore_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "crac_generic_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    }
+  ]
+}

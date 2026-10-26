@@ -2,7 +2,90 @@
 
 Stand: 26. Oktober 2026. Alle unten genannten Zahlen wurden in dieser Reihe tatsächlich gemessen. Die früheren macOS-Ergebnisse stehen im [JVM-Vergleich](JVM-VERGLEICH.md).
 
-Das kurze H2-Demo profitiert stark vom nativen Start. Bei der Groovy-Rechenprobe bleibt die gewöhnliche JVM deutlich schneller als beide Crema-Varianten. Java 27 mit AOT ist ein guter zusätzlicher Kandidat für den nächsten Versuch im Cluster. CRaC erreicht sehr kurze Restore-Laufzeiten für beide Jobs, benötigt dafür einen zuvor vorbereiteten Zustand pro Job und Startform.
+Der neue Vergleich bestätigt: **Ein einziger generischer CRaC-Checkpoint kann wechselnde, erst danach kompilierte GRETL-Job-JARs und Parameter übernehmen.** Er benötigt hier 64 ms für H2 und 75 ms für die Groovy-Rechenprobe. Die konkreten Jobmethoden waren beim Checkpoint noch unbekannt. Der Nachtrag misst alle acht Vergleichsvarianten erneut; die ursprüngliche umfangreichere Reihe bleibt darunter erhalten.
+
+## Nachtrag: generischer CRaC-Runner
+
+### Aufbau und Abnahme
+
+Der Bootstrap wärmt ausschliesslich einen festen synthetischen Job auf: Parameterauflösung, Groovy-Closures, Vorgängerresultate, `FileSize` sowie H2-SQL-Datei und Prepared Statement. Er führt drei Trainingsläufe mit jeweils 1000 einfachen Closure-Aufrufen aus, schliesst die Ressourcen, entfernt seine Trainingsdatenbanken und erzeugt einen Checkpoint. Er trainiert weder den H2-Demo-Job noch die Groovy-Rechenprobe mit ihren 100000 Aufrufen.
+
+Bei der Vorbereitung überdeckt eine leere tmpfs das Demo-Verzeichnis `/app/jobs`; der Bootstrap prüft, dass dort keine Jobdateien sichtbar sind. **Erst nach dem Checkpoint** kompiliert ein separater Container die beiden Demo-JARs sowie einen dritten Testjob nach `/post-jobs`. Die Klassenbytes der beiden Demo-JARs stimmen mit denen der Vergleichsvarianten überein. Das dritte JAR verwendet absichtlich denselben Einstiegsklassennamen `job` wie das H2-Demo und eine andere Implementierung. Es bestätigt den Wechsel zwischen unterschiedlichen JARs zusätzlich zu unterschiedlichen Klassennamen.
+
+Alle generischen Restores verwenden denselben Checkpoint unter `/generic-checkpoint/runtime`, schreibgeschützt eingebunden. Jobpfad, `--job-root`, `--db` und `--param` werden als neue Argumente an den vorhandenen GRETL-Einstieg übergeben. Dessen eigener `URLClassLoader` lädt das JAR nach dem Restore. Jeder Restore führt genau einen Job aus und beendet den Prozess. Der neue Main-Aufruf ist eine [dokumentierte CRaC-Funktion von Azul](https://docs.azul.com/crac/operational/restoring-new-arguments); der feste Runtime-Classpath bleibt erhalten. Der Checkpoint-Hash ist vor und nach Abnahme und Messung identisch:
+
+```text
+8905f06a13c530560fb2808fbb515f2ce9259fda561be4da7ad58acfceb9e58d
+```
+
+**14 funktionale Prüfungen bestehen:** Jahresparameter 2037/2038 jeweils mit unabhängiger JDBC-Kontrolle, drittes JAR mit Ergebnissen 42/91, neue Iterationszahl der Rechenprobe, ungültiger Parameter, fehlendes JAR, falscher CLI-Aufruf sowie geänderte, fehlende und fehlerhafte externe SQL-Datei. Der geänderte SQL-Inhalt wird ebenfalls unabhängig per JDBC bestätigt. Das sind echte Warp-Restores; kein Kaltstart-Fallback ist aktiviert.
+
+### Neue Messreihe
+
+Unveränderte Messregeln: Linux ARM64 in Docker Desktop, **2 CPUs / 1 GiB / kein zusätzlicher Swap**, Heap 32–512 MiB, neuer Container pro Ausführung, drei Vorläufe und zehn Messungen je Variante/Job, rotierende Reihenfolge. **160/160 Messläufe**, 48 zusätzliche Vorläufe, **16/16 Smoke-Läufe** und **8/8 separate JDBC-Prüfungen der Smoke-Datenbanken** bestehen. Kein OOM-Kill trat auf.
+
+Alle acht Varianten verwenden in dieser Reihe dasselbe ergänzte Image `sha256:07233d187fe5259d7084d3cff18e2b82c8180797c69a79db284beee4d7e5f770`. Es erweitert das unveränderte Image der ersten Reihe nur um den generischen Bootstrap, Trainingsfixture und Prüfwerkzeuge. Die bisherigen Runtime-JARs, JDKs, nativen Binaries, AOT-Caches und jobbezogenen Checkpoints werden wiederverwendet. Der generische Checkpoint wurde neu erzeugt; die bisherigen Checkpoints wurden nicht überschrieben.
+
+**Alle Zahlen dieser Vergleichstabelle stammen aus der neuen Reihe.** Mehrere Kontrollvarianten laufen diesmal schneller als in der ersten Reihe. Deshalb werden keine Beschleunigungsfaktoren aus alten und neuen Laufzeiten gemischt. Alle Varianten hier verwenden vorkompilierte Job-JARs; der generische Quellstart ist nicht Gegenstand dieses Nachtrags.
+
+![Neue Messreihe mit generischem CRaC-Checkpoint](results/linux-generic-time-memory.png)
+
+Zeit in ms: Median [Minimum–Maximum]. Speicher in MiB: Median der gemessenen Prozess-Peak-RSS-Werte. JVM-Start beziehungsweise Restore, gesamte Jobarbeit und Prozessende sind enthalten. Vorbereitung, Job-Kompilierung und Checkpoint-Erzeugung sind separat.
+
+| Variante | H2 Zeit ms | H2 RSS MiB | Groovy Zeit ms | Groovy RSS MiB |
+|---|---:|---:|---:|---:|
+| Crema Interpreter | 67 [60–88] | 149.6 | 2022 [1984–2124] | 164.0 |
+| Crema Ristretto | 74 [65–97] | 177.9 | 1299 [1263–1351] | 203.1 |
+| Java 25 | 418 [405–445] | 94.9 | 368 [364–407] | 86.6 |
+| Java 27 + AOT | 261 [232–279] | 106.8 | 294 [261–352] | 99.8 |
+| Java 28 EA + AOT-Code | 200 [179–226] | 103.6 | 204 [192–261] | 93.0 |
+| Azul CRaC-JVM kalt | 424 [391–498] | 95.9 | 386 [366–408] | 87.7 |
+| CRaC jobbezogen | 68 [59–85] | 83.7 | 58 [49–65] | 74.6 |
+| CRaC generisch | 64 [50–75] | 89.8 | 75 [61–109] | 93.6 |
+
+Containerzeit in ms: Median vom Aufruf `docker create` bis zum Abschluss von `docker start --attach`. Speicher in MiB: Median der cgroup-Peaks. Diese Kennzahlen haben die weiter unten erläuterten Messgrenzen; insbesondere ist RSS nicht mit cgroup-Speicher gleichzusetzen.
+
+| Variante | H2 Container ms | H2 cgroup MiB | Groovy Container ms | Groovy cgroup MiB |
+|---|---:|---:|---:|---:|
+| Crema Interpreter | 245 | 46.7 | 2192 | 68.6 |
+| Crema Ristretto | 255 | 54.9 | 1455 | 74.3 |
+| Java 25 | 584 | 80.9 | 512 | 72.7 |
+| Java 27 + AOT | 416 | 88.2 | 439 | 82.6 |
+| Java 28 EA + AOT-Code | 356 | 79.6 | 364 | 70.8 |
+| Azul CRaC-JVM kalt | 573 | 82.2 | 533 | 73.7 |
+| CRaC jobbezogen | 212 | 39.1 | 214 | 32.0 |
+| CRaC generisch | 241 | 35.5 | 258 | 39.3 |
+
+### Einordnung
+
+- **Ein Checkpoint pro Job ist für diesen Runner nicht erforderlich.** Ein gemeinsamer Zustand wärmt genügend Runtime-Code auf, um beide unbekannten Demo-Jobs schnell auszuführen. Neue Job-JARs und Parameter verlangen keinen neuen Checkpoint; Änderungen an JDK, Runtime, Groovy, Taskkatalog oder anderen Checkpoint-Voraussetzungen müssen neu qualifiziert werden.
+- **Bei H2 ist der generische Restore praktisch gleichauf mit dem jobbezogenen:** 64 gegenüber 68 ms, bei überlappenden Spannweiten. Das ist kein belastbarer Geschwindigkeitsvorteil des generischen Zustands. Unter Einbezug der Containerverwaltung liegt er mit 241 gegenüber 212 ms sogar dahinter; kleine Prozessdifferenzen erklären die gesamte Containerzeit nicht.
+- **Bei der Rechenprobe kostet der generische Zustand rund 17 ms beziehungsweise 29 % Prozesslaufzeit:** 75 statt 58 ms. Er enthält keinen kompilierten Code dieses Jobs. Trotzdem beträgt die Laufzeit nur etwa ein Fünftel des kalten Starts derselben Azul-JVM (386 ms). Der gemeinsame Groovy-/Runner-Zustand liefert für diese Probe bereits einen grossen Teil des Nutzens.
+- **Der Speicherpreis ist sichtbar:** generisch rund 90/94 MiB Peak-RSS statt 84/75 MiB für die beiden spezialisierten Restores. Der breiter trainierte Snapshot ist 73,8 MiB gross. Für beide Jobs zusammen ersetzt er die zwei Job-JAR-Checkpoints mit insgesamt 123,3 MiB. Das ist eine Artefaktgrössenbetrachtung; der gleichzeitige physische Speicherbedarf mehrerer Pods wurde nicht gemessen.
+- **Die Vorbereitung bleibt vorab zu bezahlen:** 0,55 s für drei synthetische Trainingsläufe und Checkpoint bei 2 CPUs / 1 GiB; die Kompilierung der Trainingsfixture erfolgt vorher beim Image-Build. Diese eine Vorbereitungszeit fällt für den gemeinsamen Zustand an. Die ältere Vorbereitungszeit der spezialisierten Checkpoints wurde hier nicht erneut gemessen und wird damit nicht direkt verglichen.
+
+Für euren Ablauf «Pod starten → wechselnden Job ausführen → Pod beenden» ist ein **gemeinsam vorbereiteter CRaC-Runner damit ein konkreter Kandidat**. Er verbindet freie Jobwahl mit kurzen Restore-Laufzeiten und vermeidet die Pflicht zur Checkpoint-Erzeugung pro Job. Die beiden Jobs belegen diese Architektur für den vorhandenen minimalen Taskkatalog, nicht die Verträglichkeit aller GRETL-Erweiterungen. Neue Jobmethoden müssen weiterhin geladen und bei Bedarf JIT-kompiliert werden; beliebige Jobs werden deshalb nicht automatisch so schnell wie diese beiden. OpenShift-Scheduling, Image-Pull, kalte Node-Caches und Ausführung unter einer zufälligen UID bleiben ausserhalb dieses Docker-Versuchs.
+
+### Reproduktion und Nachweise
+
+Voraussetzung sind das ursprüngliche Linux-Image und seine nativen/AOT-/CRaC-Artefakte. Das neue Buildskript erstellt genau einen generischen Checkpoint und kompiliert die Messjobs danach. Seine Docker-Volumes heissen `gretl-crema-linux-generic-checkpoint` und `gretl-crema-linux-generic-jobs`.
+
+```bash
+./scripts/build-generic-crac.sh
+python3 scripts/benchmark-linux.py smoke --suite generic
+python3 scripts/validate-linux-databases.py --suite generic
+python3 scripts/benchmark-linux.py measure --suite generic
+python3 scripts/collect-linux-metadata.py --suite generic
+python3 scripts/archive-linux.py --suite generic
+# Mit Matplotlib 3.9.4:
+python3 scripts/plot-linux.py --suite generic
+```
+
+Ergebnisse: [160 Rohmessungen](results/linux-generic-runs.json), [14 funktionale Prüfungen](results/linux-generic-validation.json), [16 Smoke-Läufe](results/linux-generic-smoke.json), [8 JDBC-Prüfungen](results/linux-generic-databases.json), [Vorbereitung](results/linux-generic-preparation.json), [danach kompilierte Jobklassen](results/linux-generic-jobs.json), [Runtime-Identitäten und Checkpoint-Hash nach der Messung](results/linux-generic-environment.json). Die Testjobs liegen ausserhalb des JVM-Classpaths. Ohne neue Main-/Jobargumente bricht der Bootstrap nach dem Restore ab und führt keinen gespeicherten Trainingsjob aus.
+
+## Erste Messreihe: jobbezogene Checkpoints und JVM-Varianten
+
+Die folgenden Abschnitte dokumentieren die ursprüngliche Messreihe. Dort wurden vier spezialisierte Checkpoints pro Job und Startform vorbereitet; der neue generische Nachweis steht oben.
 
 ![Laufzeit und Peak-RSS ausgewählter Varianten](results/linux-time-memory.png)
 
@@ -110,7 +193,7 @@ Die nativen Varianten haben in dieser Reihe höhere RSS-Werte als Java 25, gleic
 
 Native-Build: Interpreter **374 s**, Binary **193,4 MiB**; Ristretto **484 s**, Binary **234,8 MiB**. Dazu kommen je rund **4,1 MiB** native Begleitbibliotheken und die weiterhin benötigten GraalVM-JDK-Dateien. Build-Limit: 4 CPUs / 8 GiB. Der gemeinsame Runner wurde je Variante einmal gebaut und danach für beide externen Job-JARs verwendet.
 
-Die folgende Vorbereitung wurde **nicht** zur einzelnen Joblaufzeit addiert. Sie muss für die hier verwendeten jobbezogenen Artefakte an anderer Stelle bezahlt und bei Änderungen passend wiederholt werden. Die vier CRaC-Checkpoints gehören jeweils zu einem Job und einer Startform. Wiederverwendung eines einzigen generischen Checkpoints für beliebig wechselnde GRETL-Jobs wurde nicht nachgewiesen.
+Die folgende Vorbereitung wurde **nicht** zur einzelnen Joblaufzeit addiert. Sie muss für die hier verwendeten jobbezogenen Artefakte an anderer Stelle bezahlt und bei Änderungen passend wiederholt werden. Die vier CRaC-Checkpoints dieser ersten Reihe gehören jeweils zu einem Job und einer Startform. Die Wiederverwendung eines einzigen generischen Checkpoints wurde anschliessend im Nachtrag oben nachgewiesen.
 
 | Artefakt / Job | JAR: Vorbereitung s / MiB | Quelle: Vorbereitung s / MiB |
 |---|---:|---:|

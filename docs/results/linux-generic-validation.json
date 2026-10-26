@@ -1,0 +1,179 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "year-2037",
+      "passed": true,
+      "exit_code": 0,
+      "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n169302.923961: warp: Restore successful!\n"
+    },
+    {
+      "name": "jdbc-2037",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "name": "year-2038",
+      "passed": true,
+      "exit_code": 0,
+      "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n169303.144407: warp: Restore successful!\n"
+    },
+    {
+      "name": "jdbc-2038",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "name": "alternate-6",
+      "passed": true,
+      "exit_code": 0,
+      "output": "gretl.task.started task=newJob null\nPOST_CHECKPOINT_OK 42\ngretl.task.finished task=newJob SUCCEEDED\njob.status=SUCCEEDED\n169303.322249: warp: Restore successful!\n"
+    },
+    {
+      "name": "alternate-13",
+      "passed": true,
+      "exit_code": 0,
+      "output": "gretl.task.started task=newJob null\nPOST_CHECKPOINT_OK 91\ngretl.task.finished task=newJob SUCCEEDED\njob.status=SUCCEEDED\n169303.349021: warp: Restore successful!\n"
+    },
+    {
+      "name": "hotloop-new-parameter",
+      "passed": true,
+      "exit_code": 0,
+      "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 1829508281\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n169303.375427: warp: Restore successful!\n"
+    },
+    {
+      "name": "invalid-parameter",
+      "passed": true,
+      "exit_code": 1,
+      "output": "169303.404793: warp: Restore successful!\nch.so.agi.gretl.runtime.runner.ParameterException: Für jahr wird eine ganze Dezimalzahl erwartet.\n\tat ch.so.agi.gretl.runtime.runner.ParameterResolver.parseInteger(ParameterResolver.java:149)\n\tat ch.so.agi.gretl.runtime.runner.ParameterResolver.convert(ParameterResolver.java:112)\n\tat ch.so.agi.gretl.runtime.runner.ParameterResolver.resolve(ParameterResolver.java:67)\n\tat ch.so.agi.gretl.crema.runner.Main.run(Main.java:67)\n\tat ch.so.agi.gretl.crema.runner.Main.execute(Main.java:55)\n\tat ch.so.agi.gretl.crema.runner.Main.execute(Main.java:24)\n\tat ch.so.agi.gretl.crema.runner.Main.main(Main.java:21)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:565)\n\tat java.base/jdk.internal.crac.mirror.Core.checkpointRestore(Core.java:309)\n\tat java.base/jdk.internal.crac.mirror.Core.checkpointRestore(Core.java:267)\n\tat jdk.crac/jdk.crac.Core.checkpointRestore(Core.java:70)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:565)\n\tat bench.GenericCracLauncher.main(GenericCracLauncher.java:28)\n"
+    },
+    {
+      "name": "missing-jar",
+      "passed": true,
+      "exit_code": 1,
+      "output": "169303.427505: warp: Restore successful!\njava.nio.file.NoSuchFileException: /post-jobs/missing.jar\n\tat java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)\n\tat java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)\n\tat java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)\n\tat java.base/sun.nio.fs.UnixFileAttributeViews$Basic.readAttributes(UnixFileAttributeViews.java:57)\n\tat java.base/sun.nio.fs.UnixFileSystemProvider.readAttributes(UnixFileSystemProvider.java:161)\n\tat java.base/sun.nio.fs.LinuxFileSystemProvider.readAttributes(LinuxFileSystemProvider.java:99)\n\tat java.base/java.nio.file.Files.readAttributes(Files.java:1702)\n\tat java.base/java.util.zip.ZipFile$Source.get(ZipFile.java:1510)\n\tat java.base/java.util.zip.ZipFile$CleanableResource.<init>(ZipFile.java:706)\n\tat java.base/java.util.zip.ZipFile.<init>(ZipFile.java:206)\n\tat java.base/java.util.zip.ZipFile.<init>(ZipFile.java:152)\n\tat java.base/java.util.jar.JarFile.<init>(JarFile.java:333)\n\tat java.base/java.util.jar.JarFile.<init>(JarFile.java:306)\n\tat java.base/java.util.jar.JarFile.<init>(JarFile.java:276)\n\tat ch.so.agi.gretl.crema.runner.JobArchive.<init>(JobArchive.java:16)\n\tat ch.so.agi.gretl.crema.runner.Main.execute(Main.java:52)\n\tat ch.so.agi.gretl.crema.runner.Main.execute(Main.java:24)\n\tat ch.so.agi.gretl.crema.runner.Main.main(Main.java:21)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:565)\n\tat java.base/jdk.internal.crac.mirror.Core.checkpointRestore(Core.java:309)\n\tat java.base/jdk.internal.crac.mirror.Core.checkpointRestore(Core.java:267)\n\tat jdk.crac/jdk.crac.Core.checkpointRestore(Core.java:70)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:565)\n\tat bench.GenericCracLauncher.main(GenericCracLauncher.java:28)\n"
+    },
+    {
+      "name": "invalid-usage",
+      "passed": true,
+      "exit_code": 2,
+      "output": "169303.446098: warp: Restore successful!\nExpected run <job.jar> or probe <jar> <class>; use --help\n"
+    },
+    {
+      "name": "external-sql",
+      "passed": true,
+      "exit_code": 0,
+      "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n169303.466486: warp: Restore successful!\n"
+    },
+    {
+      "name": "jdbc-external-sql",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "name": "missing-sql",
+      "passed": true,
+      "exit_code": 1,
+      "output": "gretl.task.started task=schema null\njob.status=FAILED\n169303.646542: warp: Restore successful!\nTask schema:\n  ch.so.agi.gretl.tasks.database.SqlTaskException: SQL-Script konnte nicht gelesen werden\n    caused by: java.nio.file.NoSuchFileException: /work/external-sql/schema.sql\nch.so.agi.gretl.tasks.database.SqlTaskException: SQL-Script konnte nicht gelesen werden\n  caused by: java.nio.file.NoSuchFileException: /work/external-sql/schema.sql\n"
+    },
+    {
+      "name": "invalid-sql",
+      "passed": true,
+      "exit_code": 1,
+      "output": "gretl.task.started task=schema null\njob.status=FAILED\n169303.681378: warp: Restore successful!\nTask schema:\n  ch.so.agi.gretl.tasks.database.SqlTaskException: SQL-Script fehlgeschlagen\n    caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement \"[*]THIS IS INVALID SQL;\\000a\"; expected \"TRUNCATE\"; SQL statement:\nTHIS IS INVALID SQL;\n [42001-232]\nch.so.agi.gretl.tasks.database.SqlTaskException: SQL-Script fehlgeschlagen\n  caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement \"[*]THIS IS INVALID SQL;\\000a\"; expected \"TRUNCATE\"; SQL statement:\nTHIS IS INVALID SQL;\n [42001-232]\n"
+    }
+  ],
+  "checkpoint": {
+    "sha256": "8905f06a13c530560fb2808fbb515f2ce9259fda561be4da7ad58acfceb9e58d",
+    "bytes": 77381636,
+    "files": {
+      "core.img": {
+        "bytes": 77381632,
+        "sha256": "ca12705263615963fb688139ede3ca5e9c7815de5b2499e5a071b09c3e04392e",
+        "mtime_ns": 1793046441164846001
+      },
+      "engine": {
+        "bytes": 4,
+        "sha256": "da9e96b401da78ec09432e2d2d39be78699f51677092ee3e8c8b1ce3f8f103e1",
+        "mtime_ns": 1793046441132672751
+      }
+    }
+  },
+  "checkpoint_unchanged": true,
+  "job_build": {
+    "passed": true,
+    "checkpoint": {
+      "sha256": "8905f06a13c530560fb2808fbb515f2ce9259fda561be4da7ad58acfceb9e58d",
+      "bytes": 77381636,
+      "files": {
+        "core.img": {
+          "bytes": 77381632,
+          "sha256": "ca12705263615963fb688139ede3ca5e9c7815de5b2499e5a071b09c3e04392e",
+          "mtime_ns": 1793046441164846001
+        },
+        "engine": {
+          "bytes": 4,
+          "sha256": "da9e96b401da78ec09432e2d2d39be78699f51677092ee3e8c8b1ce3f8f103e1",
+          "mtime_ns": 1793046441132672751
+        }
+      }
+    },
+    "jobs": [
+      {
+        "job": "h2",
+        "jar": "/post-jobs/h2/job.jar",
+        "mtime_ns": 1793046441906846002,
+        "sha256": "1602575ad38c9e66a2e734297b59136df1423e85b4ab643d4b62304e427af942",
+        "classes": {
+          "job$_run_closure1.class": "d9d516c2c0856f834e4fe782caf7a1a23bee5c85ae98e6e978ca3066fe70dd0e",
+          "job$_run_closure2.class": "36c59783a25cbdf7d90be50164c3e6c5c4418ffe3e6a13faffa6d969d94343d1",
+          "job$_run_closure3.class": "31b7d16e4a61735d5b7cb1cc9c0636670cfe0e05db8b97ffc02a7fe498e60025",
+          "job$_run_closure4.class": "69c3c93b70303a7525843618cb632ede99d685a26ae7c13c7606a8825f3a9667",
+          "job.class": "0c3a587dc866bee920ed5347a6e8ac0de1353f4e7bd6a7ad71cfdef680da13df"
+        },
+        "compiled_after_checkpoint": true,
+        "class_bytes_match_controls": true
+      },
+      {
+        "job": "hotloop",
+        "jar": "/post-jobs/hotloop/hotloop.jar",
+        "mtime_ns": 1793046442290846002,
+        "sha256": "1daf12d187a4ffe76541dfb08720c98adf13eaebd573cbdf7ada29f227c5afa7",
+        "classes": {
+          "hotloop$_run_closure1$_closure2.class": "68e0c9c47b3fc72e667efde1344fa09f4ba4fc15741f33e8ee7116c62a23b8cc",
+          "hotloop$_run_closure1.class": "4a5c1cb2d59a23c9f65bbed850c9d828a64700d4d5818bbbfe2c4d402f175ede",
+          "hotloop.class": "b29cd13d7e1787f0a3490815273289a7cebd87174f513a0e58b5f60a42f103ea"
+        },
+        "compiled_after_checkpoint": true,
+        "class_bytes_match_controls": true
+      },
+      {
+        "job": "alternate",
+        "jar": "/post-jobs/alternate/job.jar",
+        "mtime_ns": 1793046442649846002,
+        "sha256": "6c373810ce043ee5e290329cfc28fa1f48912976bf82f0ee96cd610c95360fa9",
+        "classes": {
+          "job$_run_closure1.class": "41cf6abd4829c46e8b712a9b8029591cf66ca572a582704727e9daea24e9623e",
+          "job.class": "492a176f00b5e781402a354e2075d250dc2bf5036c6a531214c2b6d68578aecd"
+        },
+        "compiled_after_checkpoint": true,
+        "class_bytes_match_controls": false
+      }
+    ]
+  },
+  "container": "gretl-crema-bench-4cf150bba8a1",
+  "image_id": "sha256:07233d187fe5259d7084d3cff18e2b82c8180797c69a79db284beee4d7e5f770",
+  "docker_create_seconds": 0.03898,
+  "docker_start_to_exit_seconds": 0.9485347080000002,
+  "docker_create_to_exit_seconds": 0.9875147080000002,
+  "container_oom_killed": false,
+  "container_exit_code": 0,
+  "docker_cli_exit_code": 0,
+  "limits": {
+    "NanoCpus": 2000000000,
+    "Memory": 1073741824,
+    "MemorySwap": 1073741824,
+    "PidsLimit": 512
+  },
+  "engine_container_seconds": 0.896434
+}

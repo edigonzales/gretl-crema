@@ -1,0 +1,1 @@
+Synthetic GRETL runtime training fixture.

@@ -14,18 +14,32 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'crema-runner/target/linux'
 OUT.mkdir(parents=True, exist_ok=True)
 parser = argparse.ArgumentParser()
-parser.add_argument('action', choices=['prepare', 'smoke', 'measure'])
-parser.add_argument('--image', default='gretl-crema-linux:experiment')
+parser.add_argument('action', choices=['prepare', 'compile', 'check', 'smoke', 'measure'])
+parser.add_argument('--suite', choices=['original', 'generic'], default='original')
+parser.add_argument('--image')
 parser.add_argument('--samples', type=int, default=10)
 parser.add_argument('--warmups', type=int, default=3)
 parser.add_argument('--modes', help='Comma-separated subset')
 parser.add_argument('--kinds', help='Comma-separated subset for artifact preparation')
 parser.add_argument('--preparation-memory', choices=['1g', '2g'], default='1g', help='Untimed artifact assembly only; timed runs always use 1g')
 args = parser.parse_args()
-IMAGE = subprocess.check_output(['docker', 'image', 'inspect', '--format', '{{.Id}}', args.image], text=True).strip()
+if args.suite == 'generic':
+    OUT = ROOT / 'crema-runner/target/linux-generic'
+    OUT.mkdir(parents=True, exist_ok=True)
+if args.action in ('compile', 'check') and args.suite != 'generic':
+    parser.error('compile/check require --suite generic')
+image_name = args.image or ('gretl-crema-linux:generic' if args.suite == 'generic' else 'gretl-crema-linux:experiment')
+IMAGE = subprocess.check_output(['docker', 'image', 'inspect', '--format', '{{.Id}}', image_name], text=True).strip()
 MOUNTS = ['--mount', 'source=gretl-crema-linux-artifacts,target=/native,readonly',
           '--mount', 'source=gretl-crema-linux-aot,target=/aot',
           '--mount', 'source=gretl-crema-linux-checkpoints,target=/checkpoint']
+if args.suite == 'generic':
+    MOUNTS = [argument + ',readonly' if argument.startswith('source=') and not argument.endswith(',readonly') else argument for argument in MOUNTS]
+    MOUNTS += ['--mount', 'source=gretl-crema-linux-generic-checkpoint,target=/generic-checkpoint' + ('' if args.action == 'prepare' else ',readonly')]
+    if args.action == 'prepare':
+        MOUNTS += ['--tmpfs', '/app/jobs']
+    else:
+        MOUNTS += ['--mount', 'source=gretl-crema-linux-generic-jobs,target=/post-jobs' + ('' if args.action == 'compile' else ',readonly')]
 memory = args.preparation_memory if args.action == 'prepare' else '1g'
 EXPECTED_MEMORY = 1073741824 if memory == '1g' else 2147483648
 LIMITS = ['--cpus=2', '--memory=' + memory, '--memory-swap=' + memory, '--pids-limit=512', '--network=none']
@@ -33,6 +47,9 @@ MODES = ['interpreter', 'ristretto', 'jdk25_bytecode', 'jdk25_source', 'jdk27_by
          'jdk27_aot_bytecode', 'jdk27_aot_source', 'jdk27_aotserial_bytecode', 'jdk27_aotserial_source',
          'jdk27_eager_bytecode', 'jdk27_eager_source', 'crac_cold_bytecode', 'crac_cold_source',
          'crac_restore_bytecode', 'crac_restore_source', 'jdk28_bytecode', 'jdk28_source', 'jdk28_aot_bytecode', 'jdk28_aot_source']
+if args.suite == 'generic':
+    MODES = ['interpreter', 'ristretto', 'jdk25_bytecode', 'jdk27_aot_bytecode', 'jdk28_aot_bytecode',
+             'crac_cold_bytecode', 'crac_restore_bytecode', 'crac_generic_bytecode']
 if args.modes:
     MODES = args.modes.split(',')
 
@@ -85,6 +102,14 @@ def run_container(command, label):
     finally:
         subprocess.run(['docker', 'rm', '--force', name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
+
+if args.suite == 'generic' and args.action in ('prepare', 'compile', 'check'):
+    command = {'prepare': ['prepare.py', 'crac_generic', 'generic', 'bytecode'],
+               'compile': ['compile-post-checkpoint.py'], 'check': ['verify-generic.py']}[args.action]
+    result = run_container(['python3', '/app/bench/' + command[0], *command[1:]], 'generic-' + args.action)
+    save({'prepare': 'preparation.json', 'compile': 'jobs.json', 'check': 'validation.json'}[args.action], result)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    raise SystemExit(0 if result['passed'] else 1)
 
 if args.action == 'prepare':
     previous = OUT / 'preparation.json'

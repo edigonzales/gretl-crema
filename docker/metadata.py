@@ -44,4 +44,9 @@ for directory in Path('/checkpoint').iterdir():
             'files': {str(p.relative_to(directory)): {'bytes': p.stat().st_size, 'sha256': digest(p)} for p in files}}
 for file in [*Path('/app/runtime').rglob('*.jar'), *Path('/app/compiler').glob('*.jar')]:
     report['jars'][str(file)] = {'bytes': file.stat().st_size, 'sha256': digest(file)}
+if Path('/generic-checkpoint/runtime').exists():
+    from generic_artifacts import checkpoint_identity
+    report['generic_checkpoint'] = checkpoint_identity()
+    report['post_checkpoint_jobs'] = json.loads(Path('/post-jobs/identity.json').read_text())
+    assert report['generic_checkpoint']['sha256'] == report['post_checkpoint_jobs']['checkpoint']['sha256']
 print(json.dumps(report, indent=2))

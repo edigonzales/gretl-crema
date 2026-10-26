@@ -108,6 +108,19 @@ Die Reihe misst Docker unter Linux ARM64 in Docker Desktop. Sie bildet keine Ope
 
 Auswertung: [Linux-Prüfbericht](docs/LINUX-VERGLEICH.md).
 
+Ein generischer CRaC-Checkpoint für wechselnde Job-JARs:
+
+```bash
+./scripts/build-generic-crac.sh
+python3 scripts/benchmark-linux.py smoke --suite generic
+python3 scripts/validate-linux-databases.py --suite generic
+python3 scripts/benchmark-linux.py measure --suite generic
+python3 scripts/collect-linux-metadata.py --suite generic
+python3 scripts/archive-linux.py --suite generic
+```
+
+Der Bootstrap trainiert einen festen synthetischen GRETL-Job; die Demo-Jobs sind dabei ausgeblendet und werden erst nach dem Checkpoint kompiliert. Derselbe schreibgeschützte Checkpoint übernimmt beim Restore den Jobpfad und alle CLI-Parameter. Die zusätzliche Reihe misst acht Varianten erneut mit denselben Limits und frischen Containern. Ergebnisse: generischer Restore 64 ms für H2 und 75 ms für die Groovy-Rechenprobe, gegenüber 68/58 ms mit jobbezogenen Checkpoints. Alle Werte enthalten Restore und vollständige Jobarbeit; die gemeinsame Vorbereitung liegt separat bei 0,55 s. Details und Speicherwerte im [Nachtrag](docs/LINUX-VERGLEICH.md#nachtrag-generischer-crac-runner).
+
 ## Grenzen
 
 Crema und die Groovy-Native-Unterstützung sind experimentell. Das Binary enthält einen festgelegten Taskkatalog; nur die Jobs werden nachgeladen. Parallelität, zusätzliche Task-JARs, Layers, PostgreSQL, DuckDB, INTERLIS und GeoTools sind nicht Gegenstand dieses Versuchs.

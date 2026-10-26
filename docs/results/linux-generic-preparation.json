@@ -1,0 +1,36 @@
+{
+  "kind": "crac_generic",
+  "job": "generic",
+  "form": "bytecode",
+  "command": [
+    "/opt/crac25/bin/java",
+    "-Xms32m",
+    "-Xmx512m",
+    "-XX:CRaCCheckpointTo=/generic-checkpoint/runtime",
+    "-XX:CRaCEngine=warp",
+    "-XX:CRaCEngineOptions=keep_running=false",
+    "-cp",
+    "/app/support/classes:/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+    "bench.GenericCracLauncher"
+  ],
+  "seconds": 0.5507415840111207,
+  "artifact_bytes": 77381636,
+  "exit_code": -9,
+  "passed": true,
+  "output": "gretl.task.started task=initialize null\ngretl.task.finished task=initialize SUCCEEDED\ngretl.task.started task=size null\ngretl.task.finished task=size SUCCEEDED\ngretl.task.started task=store null\ngretl.task.finished task=store SUCCEEDED\ngretl.task.started task=exercise null\nRUNTIME_TRAINING_OK 3001\ngretl.task.finished task=exercise SUCCEEDED\njob.status=SUCCEEDED\ngretl.task.started task=initialize null\ngretl.task.finished task=initialize SUCCEEDED\ngretl.task.started task=size null\ngretl.task.finished task=size SUCCEEDED\ngretl.task.started task=store null\ngretl.task.finished task=store SUCCEEDED\ngretl.task.started task=exercise null\nRUNTIME_TRAINING_OK 3002\ngretl.task.finished task=exercise SUCCEEDED\njob.status=SUCCEEDED\ngretl.task.started task=initialize null\ngretl.task.finished task=initialize SUCCEEDED\ngretl.task.started task=size null\ngretl.task.finished task=size SUCCEEDED\ngretl.task.started task=store null\ngretl.task.finished task=store SUCCEEDED\ngretl.task.started task=exercise null\nRUNTIME_TRAINING_OK 3003\ngretl.task.finished task=exercise SUCCEEDED\njob.status=SUCCEEDED\nCRAC_GENERIC_CHECKPOINT jobs-visible=0 training-runs=3\nOct 26, 2026 8:27:21 PM jdk.internal.crac.LoggerContainer info\nINFO: Starting checkpoint\nOct 26, 2026 8:27:21 PM jdk.internal.crac.LoggerContainer info\nINFO: /app/training/runtimeWarmup.jar is recorded as always available on restore\nOct 26, 2026 8:27:21 PM jdk.internal.crac.LoggerContainer info\nINFO: /app/training/runtimeWarmup.jar is recorded as always available on restore\nOct 26, 2026 8:27:21 PM jdk.internal.crac.LoggerContainer info\nINFO: /app/training/runtimeWarmup.jar is recorded as always available on restore\nOct 26, 2026 8:27:21 PM jdk.internal.crac.LoggerContainer info\nINFO: /app/runtime/lib/h2-2.3.232.jar is recorded as always available on restore\nOct 26, 2026 8:27:21 PM jdk.internal.crac.LoggerContainer info\nINFO: /app/runtime/lib/groovy-6.0.0.jar is recorded as always available on restore\nOct 26, 2026 8:27:21 PM jdk.internal.crac.LoggerContainer info\nINFO: /app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar is recorded as always available on restore\nOct 26, 2026 8:27:21 PM jdk.internal.crac.LoggerContainer info\nINFO: /app/runtime/runner.jar is recorded as always available on restore\nOct 26, 2026 8:27:21 PM jdk.internal.crac.LoggerContainer info\nINFO: /app/compiler/compiler.jar is recorded as always available on restore\n[0.510s][info][crac] Checkpoint ...\n169301.061790: warp: Checkpoint 6 to /generic-checkpoint/runtime\n169301.094658: Checkpointing thread wakeup after checkpoint/restore\n169301.094727: Restore open file descriptors\n169301.094791: Waiting for other threads...\n169301.094791: Memory cleanup after checkpoint/restore\n169301.094818: Checkpointing thread checkpoint/restore completed\n169301.094818: warp: Checkpoint successful!\n",
+  "container": "gretl-crema-bench-d637bfbd0761",
+  "image_id": "sha256:07233d187fe5259d7084d3cff18e2b82c8180797c69a79db284beee4d7e5f770",
+  "docker_create_seconds": 0.063713291,
+  "docker_start_to_exit_seconds": 0.68530575,
+  "docker_create_to_exit_seconds": 0.749019041,
+  "container_oom_killed": false,
+  "container_exit_code": 0,
+  "docker_cli_exit_code": 0,
+  "limits": {
+    "NanoCpus": 2000000000,
+    "Memory": 1073741824,
+    "MemorySwap": 1073741824,
+    "PidsLimit": 512
+  },
+  "engine_container_seconds": 0.607861
+}
