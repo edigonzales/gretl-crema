@@ -1,0 +1,8 @@
+**/target/
+.tools/
+out/
+.DS_Store
+*.mv.db
+*.trace.db
+__pycache__/
+*.pyc

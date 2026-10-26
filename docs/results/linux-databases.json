@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "databases": [
+    {
+      "file": "crac_cold_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "crac_cold_source-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "crac_restore_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "crac_restore_source-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "interpreter-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk25_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk25_source-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk27_aot_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk27_aot_source-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk27_aotserial_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk27_aotserial_source-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk27_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk27_eager_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk27_eager_source-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk27_source-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk28_aot_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk28_aot_source-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk28_bytecode-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "jdk28_source-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    },
+    {
+      "file": "ristretto-h2.mv.db",
+      "passed": true,
+      "output": "DATABASE_CHECK_OK\n"
+    }
+  ]
+}

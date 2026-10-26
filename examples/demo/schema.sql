@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS messung(jahr BIGINT, bytes BIGINT);
+DELETE FROM messung;

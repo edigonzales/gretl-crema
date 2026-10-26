@@ -1,0 +1,32 @@
+[
+  {
+    "runtime": "jdk25",
+    "exit_code": 0,
+    "user": "nobody",
+    "tests": 204,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  {
+    "runtime": "jdk27",
+    "exit_code": 0,
+    "user": "nobody",
+    "tests": 204,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  {
+    "runtime": "jdk28",
+    "exit_code": 0,
+    "user": "nobody",
+    "tests": 204,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "passed": true
+  }
+]

@@ -1,0 +1,78 @@
+=== h2_demo (separate diagnostic run, not timed) ===
+SQL-Einträge: 1
+job.status=SUCCEEDED
+=== dynamic_groovy_hotloop (separate diagnostic run, not timed) ===
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/30928.invoke(Object, Object) entryBCI=-1 start=0x7000000000 end=0x7000000190 entry=0x7000000000 size=400
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/30928.invoke(Object, Object): 400 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/30933.invoke(Object, int) entryBCI=-1 start=0x7000008000 end=0x7000008294 entry=0x7000008000 size=660
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/30933.invoke(Object, int): 660 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/30976.collector(Object, Object, Object) entryBCI=-1 start=0x7000010000 end=0x7000010374 entry=0x7000010000 size=884
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/30976.collector(Object, Object, Object): 884 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/30973.invoke(Object) entryBCI=-1 start=0x7000018000 end=0x7000018188 entry=0x7000018000 size=392
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/30973.invoke(Object): 392 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$DMH/31042.invokeStatic(Object, Object, int) entryBCI=-1 start=0x7000020000 end=0x7000020120 entry=0x7000020000 size=288
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$DMH/31042.invokeStatic(Object, Object, int): 288 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$DMH/31043.invokeStaticInit(Object, Object, Object, Object, Object) entryBCI=-1 start=0x7000028000 end=0x7000028120 entry=0x7000028000 size=288
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$DMH/31043.invokeStaticInit(Object, Object, Object, Object, Object): 288 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31013.invoke(Object, Object, long) entryBCI=-1 start=0x7000030000 end=0x70000303a4 entry=0x7000030000 size=932
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31013.invoke(Object, Object, long): 932 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31014.linkToTargetMethod(Object, long, Object) entryBCI=-1 start=0x7000038000 end=0x70000380fc entry=0x7000038000 size=252
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31014.linkToTargetMethod(Object, long, Object): 252 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31041.invoke(Object, Object) entryBCI=-1 start=0x7000040000 end=0x7000040188 entry=0x7000040000 size=392
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31041.invoke(Object, Object): 392 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$DMH/30969.invokeStaticInit(Object, Object, Object, Object, int, Object, Object, Object, Object) entryBCI=-1 start=0x7000048000 end=0x7000048158 entry=0x7000048000 size=344
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$DMH/30969.invokeStaticInit(Object, Object, Object, Object, int, Object, Object, Object, Object): 344 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$DMH/30968.invokeStatic(Object, Object, int) entryBCI=-1 start=0x7000050000 end=0x7000050120 entry=0x7000050000 size=288
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$DMH/30968.invokeStatic(Object, Object, int): 288 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31046.invoke(Object, Object, long) entryBCI=-1 start=0x7000058000 end=0x7000058310 entry=0x7000058000 size=784
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31046.invoke(Object, Object, long): 784 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31048.guard(Object, Object, long) entryBCI=-1 start=0x7000060000 end=0x70000602e4 entry=0x7000060000 size=740
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31048.guard(Object, Object, long): 740 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31049.invoke(Object, Object, long) entryBCI=-1 start=0x7000068000 end=0x70000682b8 entry=0x7000068000 size=696
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31049.invoke(Object, Object, long): 696 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31051.invoke(Object, Object) entryBCI=-1 start=0x7000070000 end=0x70000704a0 entry=0x7000070000 size=1184
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31051.invoke(Object, Object): 1184 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$DMH/31019.invokeStaticInit(Object, long, long) entryBCI=-1 start=0x7000078000 end=0x7000078110 entry=0x7000078000 size=272
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$DMH/31019.invokeStaticInit(Object, long, long): 272 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/30930.invoke(Object, Object) entryBCI=-1 start=0x7000080000 end=0x7000080188 entry=0x7000080000 size=392
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/30930.invoke(Object, Object): 392 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/30996.collector(Object, Object) entryBCI=-1 start=0x7000088000 end=0x70000882b4 entry=0x7000088000 size=692
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/30996.collector(Object, Object): 692 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$DMH/31022.invokeStaticInit(Object, int) entryBCI=-1 start=0x7000090000 end=0x7000090114 entry=0x7000090000 size=276
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$DMH/31022.invokeStaticInit(Object, int): 276 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31059.invoke(Object, int) entryBCI=-1 start=0x7000098000 end=0x700009828c entry=0x7000098000 size=652
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31059.invoke(Object, int): 652 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31060.invoke(Object, int) entryBCI=-1 start=0x70000a0000 end=0x70000a0310 entry=0x70000a0000 size=784
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31060.invoke(Object, int): 784 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31061.guard(Object, int) entryBCI=-1 start=0x70000a8000 end=0x70000a82bc entry=0x70000a8000 size=700
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31061.guard(Object, int): 700 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31062.invoke(Object, int) entryBCI=-1 start=0x70000b0000 end=0x70000b0298 entry=0x70000b0000 size=664
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31062.invoke(Object, int): 664 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31064.invoke(Object, Object) entryBCI=-1 start=0x70000b8000 end=0x70000b8480 entry=0x70000b8000 size=1152
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31064.invoke(Object, Object): 1152 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31058.invoke(Object, int) entryBCI=-1 start=0x70000c0000 end=0x70000c0398 entry=0x70000c0000 size=920
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31058.invoke(Object, int): 920 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$DMH/31053.invokeStaticInit(Object, Object, Object) entryBCI=-1 start=0x70000c8000 end=0x70000c8110 entry=0x70000c8000 size=272
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$DMH/31053.invokeStaticInit(Object, Object, Object): 272 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31052.invoke(Object, Object, long) entryBCI=-1 start=0x70000d0000 end=0x70000d0374 entry=0x70000d0000 size=884
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31052.invoke(Object, Object, long): 884 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31045.invoke(Object, Object, long) entryBCI=-1 start=0x70000d8000 end=0x70000d8368 entry=0x70000d8000 size=872
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31045.invoke(Object, Object, long): 872 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31029.invoke(Object, long, long) entryBCI=-1 start=0x70000e0000 end=0x70000e028c entry=0x70000e0000 size=652
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31029.invoke(Object, long, long): 652 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31030.invoke(Object, long, long) entryBCI=-1 start=0x70000e8000 end=0x70000e8310 entry=0x70000e8000 size=784
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31030.invoke(Object, long, long): 784 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31032.guard(Object, long, long) entryBCI=-1 start=0x70000f0000 end=0x70000f02c0 entry=0x70000f0000 size=704
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31032.guard(Object, long, long): 704 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31037.invoke(Object, long, long) entryBCI=-1 start=0x70000f8000 end=0x70000f82dc entry=0x70000f8000 size=732
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31037.invoke(Object, long, long): 732 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31040.invoke(Object, Object) entryBCI=-1 start=0x7000100000 end=0x70001004b0 entry=0x7000100000 size=1200
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31040.invoke(Object, Object): 1200 bytes
+[Ristretto CodeMap] method=java.lang.invoke.LambdaForm$MH/31017.invoke(Object, long, long) entryBCI=-1 start=0x7000108000 end=0x70001083cc entry=0x7000108000 size=972
+[Ristretto Compiler] Finished compilation, code for java.lang.invoke.LambdaForm$MH/31017.invoke(Object, long, long): 972 bytes
+[Ristretto CodeMap] method=hotloop$_run_closure1$_closure2.doCall(long) entryBCI=-1 start=0x7000110000 end=0x7000110aec entry=0x7000110000 size=2796
+[Ristretto Compiler] Finished compilation, code for hotloop$_run_closure1$_closure2.doCall(long): 2796 bytes
+[Ristretto CodeMap] method=hotloop$_run_closure1.doCall(Object) entryBCI=33 start=0x7000118000 end=0x7000118e80 entry=0x7000118000 size=3712
+[Ristretto Compiler] Finished compilation, code for hotloop$_run_closure1.doCall(Object): 3712 bytes
+HOTLOOP_OK 326690737
+job.status=SUCCEEDED

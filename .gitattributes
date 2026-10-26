@@ -1,0 +1,5 @@
+# Preserve formatting emitted by diagnostic tools and Matplotlib.
+docs/results/*.log -whitespace
+docs/results/*.svg -whitespace
+# Maven's Windows wrapper intentionally uses CRLF.
+mvnw.cmd whitespace=cr-at-eol

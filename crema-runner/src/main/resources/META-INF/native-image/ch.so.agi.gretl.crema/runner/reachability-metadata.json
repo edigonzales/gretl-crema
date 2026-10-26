@@ -1,0 +1,5 @@
+{
+  "reflection": [
+    { "type": "sun.net.www.protocol.jar.Handler", "methods": [{ "name": "<init>", "parameterTypes": [] }] }
+  ]
+}

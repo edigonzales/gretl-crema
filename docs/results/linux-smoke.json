@@ -1,0 +1,3779 @@
+{
+  "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+  "limits": [
+    "--cpus=2",
+    "--memory=1g",
+    "--memory-swap=1g",
+    "--pids-limit=512",
+    "--network=none"
+  ],
+  "heap": "-Xms32m -Xmx512m",
+  "warmups": 0,
+  "samples": 1,
+  "fresh_container_per_execution": true,
+  "workloads": {
+    "h2": {
+      "runs": {
+        "interpreter": [
+          {
+            "mode": "interpreter",
+            "job": "h2",
+            "command": [
+              "/native/interpreter/gretl-crema",
+              "-Djava.home=/opt/graal",
+              "-Xms32m",
+              "-Xmx512m",
+              "run",
+              "/app/jobs/h2/job.jar",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.16272195900091901,
+            "user_cpu_seconds": 0.048817,
+            "system_cpu_seconds": 0.055791,
+            "peak_rss_bytes": 156745728,
+            "cgroup_memory_peak_bytes": 240902144,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-e7b963606ee8",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.045484750000000004,
+            "docker_start_to_exit_seconds": 0.266412,
+            "docker_create_to_exit_seconds": 0.31189675,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.213714,
+            "database_copy": "crema-runner/target/linux/db-checks/interpreter-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "ristretto": [
+          {
+            "mode": "ristretto",
+            "job": "h2",
+            "command": [
+              "/native/ristretto/gretl-crema",
+              "-Djava.home=/opt/graal",
+              "-Xms32m",
+              "-Xmx512m",
+              "run",
+              "/app/jobs/h2/job.jar",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.16568174998974428,
+            "user_cpu_seconds": 0.07385699999999999,
+            "system_cpu_seconds": 0.089033,
+            "peak_rss_bytes": 186281984,
+            "cgroup_memory_peak_bytes": 57118720,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-575febc1b421",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.046025374999999924,
+            "docker_start_to_exit_seconds": 0.28524691700000004,
+            "docker_create_to_exit_seconds": 0.33127229199999997,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.224108,
+            "database_copy": "crema-runner/target/linux/db-checks/ristretto-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk25_bytecode": [
+          {
+            "mode": "jdk25_bytecode",
+            "job": "h2",
+            "command": [
+              "/opt/jdk25/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/h2/job.jar",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.427045749995159,
+            "user_cpu_seconds": 0.72965,
+            "system_cpu_seconds": 0.074391,
+            "peak_rss_bytes": 102211584,
+            "cgroup_memory_peak_bytes": 87355392,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-c349b935bc95",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.05498733300000003,
+            "docker_start_to_exit_seconds": 0.53008975,
+            "docker_create_to_exit_seconds": 0.585077083,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.476666,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk25_bytecode-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk25_source": [
+          {
+            "mode": "jdk25_source",
+            "job": "h2",
+            "command": [
+              "/opt/jdk25/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/h2/job.groovy",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.5713369169970974,
+            "user_cpu_seconds": 1.001044,
+            "system_cpu_seconds": 0.067339,
+            "peak_rss_bytes": 119947264,
+            "cgroup_memory_peak_bytes": 104841216,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-9961fd57914a",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.056549290999999835,
+            "docker_start_to_exit_seconds": 0.684522834,
+            "docker_create_to_exit_seconds": 0.7410721249999999,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.616785,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk25_source-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk27_bytecode": [
+          {
+            "mode": "jdk27_bytecode",
+            "job": "h2",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/h2/job.jar",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.4414978330023587,
+            "user_cpu_seconds": 0.7708349999999999,
+            "system_cpu_seconds": 0.081939,
+            "peak_rss_bytes": 131362816,
+            "cgroup_memory_peak_bytes": 115867648,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-3bd3433dcd84",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.05808516699999977,
+            "docker_start_to_exit_seconds": 0.5392468749999999,
+            "docker_create_to_exit_seconds": 0.5973320419999997,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.487554,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk27_bytecode-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk27_source": [
+          {
+            "mode": "jdk27_source",
+            "job": "h2",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/h2/job.groovy",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.5938797080016229,
+            "user_cpu_seconds": 1.1074,
+            "system_cpu_seconds": 0.062816,
+            "peak_rss_bytes": 188080128,
+            "cgroup_memory_peak_bytes": 172273664,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-526d57d8b190",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04698037499999996,
+            "docker_start_to_exit_seconds": 0.7007900410000003,
+            "docker_create_to_exit_seconds": 0.7477704160000003,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.650486,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk27_source-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk27_aot_bytecode": [
+          {
+            "mode": "jdk27_aot_bytecode",
+            "job": "h2",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/h2-bytecode.aot",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/h2/job.jar",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.254288791998988,
+            "user_cpu_seconds": 0.450694,
+            "system_cpu_seconds": 0.054445999999999994,
+            "peak_rss_bytes": 111726592,
+            "cgroup_memory_peak_bytes": 127868928,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-42535837d8e9",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.049134542,
+            "docker_start_to_exit_seconds": 0.36583166700000014,
+            "docker_create_to_exit_seconds": 0.41496620900000014,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.31568,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk27_aot_bytecode-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk27_aot_source": [
+          {
+            "mode": "jdk27_aot_source",
+            "job": "h2",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/h2-source.aot",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/h2/job.groovy",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.3685055419919081,
+            "user_cpu_seconds": 0.6777869999999999,
+            "system_cpu_seconds": 0.082706,
+            "peak_rss_bytes": 136474624,
+            "cgroup_memory_peak_bytes": 159313920,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-e18c0236d912",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04639575000000029,
+            "docker_start_to_exit_seconds": 0.4692437079999996,
+            "docker_create_to_exit_seconds": 0.5156394579999999,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.411794,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk27_aot_source-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk27_aotserial_bytecode": [
+          {
+            "mode": "jdk27_aotserial_bytecode",
+            "job": "h2",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/h2-bytecode-serial.aot",
+              "-XX:+UseSerialGC",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/h2/job.jar",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.24439441700815223,
+            "user_cpu_seconds": 0.43068,
+            "system_cpu_seconds": 0.051802999999999995,
+            "peak_rss_bytes": 99119104,
+            "cgroup_memory_peak_bytes": 116490240,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-513a9142df01",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.051836291000000756,
+            "docker_start_to_exit_seconds": 0.35291633300000047,
+            "docker_create_to_exit_seconds": 0.4047526240000012,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.298225,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk27_aotserial_bytecode-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk27_aotserial_source": [
+          {
+            "mode": "jdk27_aotserial_source",
+            "job": "h2",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/h2-source-serial.aot",
+              "-XX:+UseSerialGC",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/h2/job.groovy",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.36163641698658466,
+            "user_cpu_seconds": 0.6213409999999999,
+            "system_cpu_seconds": 0.049423999999999996,
+            "peak_rss_bytes": 109203456,
+            "cgroup_memory_peak_bytes": 134336512,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-6e65a1b04ddd",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.13379408299999973,
+            "docker_start_to_exit_seconds": 0.46942020799999984,
+            "docker_create_to_exit_seconds": 0.6032142909999996,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.410317,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk27_aotserial_source-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk27_eager_bytecode": [
+          {
+            "mode": "jdk27_eager_bytecode",
+            "job": "h2",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/h2-bytecode-eager.aot",
+              "-XX:+UnlockExperimentalVMOptions",
+              "-XX:+AOTCompileEagerly",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/h2/job.jar",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.24784024999826215,
+            "user_cpu_seconds": 0.484985,
+            "system_cpu_seconds": 0.044275999999999996,
+            "peak_rss_bytes": 112287744,
+            "cgroup_memory_peak_bytes": 128475136,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-315c61c4521f",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04648945900000001,
+            "docker_start_to_exit_seconds": 0.35254412500000054,
+            "docker_create_to_exit_seconds": 0.39903358400000055,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.300577,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk27_eager_bytecode-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk27_eager_source": [
+          {
+            "mode": "jdk27_eager_source",
+            "job": "h2",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/h2-source-eager.aot",
+              "-XX:+UnlockExperimentalVMOptions",
+              "-XX:+AOTCompileEagerly",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/h2/job.groovy",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.36360354197677225,
+            "user_cpu_seconds": 0.6881189999999999,
+            "system_cpu_seconds": 0.059182,
+            "peak_rss_bytes": 138027008,
+            "cgroup_memory_peak_bytes": 160972800,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-b4bf558e4c51",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.054659332999999144,
+            "docker_start_to_exit_seconds": 0.48691954199999987,
+            "docker_create_to_exit_seconds": 0.541578874999999,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.42511,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk27_eager_source-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "crac_cold_bytecode": [
+          {
+            "mode": "crac_cold_bytecode",
+            "job": "h2",
+            "command": [
+              "/opt/crac25/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/support/classes:/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "bench.CracLauncher",
+              "bytecode",
+              "h2"
+            ],
+            "process_seconds": 0.4224988750065677,
+            "user_cpu_seconds": 0.7713599999999999,
+            "system_cpu_seconds": 0.044482,
+            "peak_rss_bytes": 98652160,
+            "cgroup_memory_peak_bytes": 84066304,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-3ef38e0708b1",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04518154199999991,
+            "docker_start_to_exit_seconds": 0.5254366250000002,
+            "docker_create_to_exit_seconds": 0.5706181670000001,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.476954,
+            "database_copy": "crema-runner/target/linux/db-checks/crac_cold_bytecode-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "crac_cold_source": [
+          {
+            "mode": "crac_cold_source",
+            "job": "h2",
+            "command": [
+              "/opt/crac25/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/support/classes:/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "bench.CracLauncher",
+              "source",
+              "h2"
+            ],
+            "process_seconds": 0.6069235840113834,
+            "user_cpu_seconds": 1.128948,
+            "system_cpu_seconds": 0.048910999999999996,
+            "peak_rss_bytes": 122875904,
+            "cgroup_memory_peak_bytes": 107921408,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-48f74e96e7cf",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.048540583000000304,
+            "docker_start_to_exit_seconds": 0.7160647920000001,
+            "docker_create_to_exit_seconds": 0.7646053750000004,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.66759,
+            "database_copy": "crema-runner/target/linux/db-checks/crac_cold_source-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "crac_restore_bytecode": [
+          {
+            "mode": "crac_restore_bytecode",
+            "job": "h2",
+            "command": [
+              "/opt/crac25/bin/java",
+              "-XX:CRaCEngine=warp",
+              "-XX:CRaCRestoreFrom=/checkpoint/h2-bytecode"
+            ],
+            "process_seconds": 0.08257916700677015,
+            "user_cpu_seconds": 0.077859,
+            "system_cpu_seconds": 0.042003,
+            "peak_rss_bytes": 87580672,
+            "cgroup_memory_peak_bytes": 111542272,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "166998.309803: warp: Restore successful!\nCRAC_RESTORE_OK\ngretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-045c4f24e0f3",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.05009391699999988,
+            "docker_start_to_exit_seconds": 0.1884576659999997,
+            "docker_create_to_exit_seconds": 0.23855158299999957,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.139106,
+            "database_copy": "crema-runner/target/linux/db-checks/crac_restore_bytecode-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "crac_restore_source": [
+          {
+            "mode": "crac_restore_source",
+            "job": "h2",
+            "command": [
+              "/opt/crac25/bin/java",
+              "-XX:CRaCEngine=warp",
+              "-XX:CRaCRestoreFrom=/checkpoint/h2-source"
+            ],
+            "process_seconds": 0.11323058299603872,
+            "user_cpu_seconds": 0.128493,
+            "system_cpu_seconds": 0.062752,
+            "peak_rss_bytes": 103219200,
+            "cgroup_memory_peak_bytes": 128561152,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "166998.665144: warp: Restore successful!\nCRAC_RESTORE_OK\ngretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-205f12fdc556",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.060171792000000224,
+            "docker_start_to_exit_seconds": 0.2347962920000004,
+            "docker_create_to_exit_seconds": 0.29496808400000063,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.168026,
+            "database_copy": "crema-runner/target/linux/db-checks/crac_restore_source-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk28_bytecode": [
+          {
+            "mode": "jdk28_bytecode",
+            "job": "h2",
+            "command": [
+              "/opt/jdk28/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/h2/job.jar",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.43660416701459326,
+            "user_cpu_seconds": 0.807097,
+            "system_cpu_seconds": 0.046234,
+            "peak_rss_bytes": 121507840,
+            "cgroup_memory_peak_bytes": 105381888,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-96c5e1a7f641",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.06497637500000053,
+            "docker_start_to_exit_seconds": 0.5417634170000003,
+            "docker_create_to_exit_seconds": 0.6067397920000008,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.487471,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk28_bytecode-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk28_source": [
+          {
+            "mode": "jdk28_source",
+            "job": "h2",
+            "command": [
+              "/opt/jdk28/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/h2/job.groovy",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.6359310419938993,
+            "user_cpu_seconds": 1.181094,
+            "system_cpu_seconds": 0.058053,
+            "peak_rss_bytes": 183537664,
+            "cgroup_memory_peak_bytes": 166993920,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-ce400f3c057d",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04695962500000128,
+            "docker_start_to_exit_seconds": 0.7425805420000007,
+            "docker_create_to_exit_seconds": 0.789540167000002,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.694417,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk28_source-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk28_aot_bytecode": [
+          {
+            "mode": "jdk28_aot_bytecode",
+            "job": "h2",
+            "command": [
+              "/opt/jdk28/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/h2-bytecode-jdk28.aot",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/h2/job.jar",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.23646133299916983,
+            "user_cpu_seconds": 0.363543,
+            "system_cpu_seconds": 0.077974,
+            "peak_rss_bytes": 108748800,
+            "cgroup_memory_peak_bytes": 83697664,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-903eea70f7c2",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.053703500000001014,
+            "docker_start_to_exit_seconds": 0.34696295900000074,
+            "docker_create_to_exit_seconds": 0.40066645900000175,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.295767,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk28_aot_bytecode-h2.mv.db",
+            "round": 0
+          }
+        ],
+        "jdk28_aot_source": [
+          {
+            "mode": "jdk28_aot_source",
+            "job": "h2",
+            "command": [
+              "/opt/jdk28/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/h2-source-jdk28.aot",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/h2/job.groovy",
+              "--job-root",
+              "/app/jobs/h2",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "jahr=2026"
+            ],
+            "process_seconds": 0.3565502919955179,
+            "user_cpu_seconds": 0.590718,
+            "system_cpu_seconds": 0.074748,
+            "peak_rss_bytes": 150663168,
+            "cgroup_memory_peak_bytes": 120922112,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=schema null\ngretl.task.finished task=schema SUCCEEDED\ngretl.task.started task=messen null\ngretl.task.finished task=messen SUCCEEDED\ngretl.task.started task=speichern null\ngretl.task.finished task=speichern SUCCEEDED\ngretl.task.started task=melden null\nSQL-Einträge: 1\ngretl.task.finished task=melden SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-fbad7105383b",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.057818541999999695,
+            "docker_start_to_exit_seconds": 0.47922483299999996,
+            "docker_create_to_exit_seconds": 0.5370433749999997,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.419957,
+            "database_copy": "crema-runner/target/linux/db-checks/jdk28_aot_source-h2.mv.db",
+            "round": 0
+          }
+        ]
+      },
+      "warmup_failures": [],
+      "summary": {
+        "interpreter": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.16272195900091901,
+            "min": 0.16272195900091901,
+            "max": 0.16272195900091901
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.266412,
+            "min": 0.266412,
+            "max": 0.266412
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.31189675,
+            "min": 0.31189675,
+            "max": 0.31189675
+          },
+          "engine_container_seconds": {
+            "median": 0.213714,
+            "min": 0.213714,
+            "max": 0.213714
+          },
+          "peak_rss_bytes": {
+            "median": 156745728,
+            "min": 156745728,
+            "max": 156745728
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 240902144,
+            "min": 240902144,
+            "max": 240902144
+          },
+          "user_cpu_seconds": {
+            "median": 0.048817,
+            "min": 0.048817,
+            "max": 0.048817
+          },
+          "system_cpu_seconds": {
+            "median": 0.055791,
+            "min": 0.055791,
+            "max": 0.055791
+          }
+        },
+        "ristretto": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.16568174998974428,
+            "min": 0.16568174998974428,
+            "max": 0.16568174998974428
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.28524691700000004,
+            "min": 0.28524691700000004,
+            "max": 0.28524691700000004
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.33127229199999997,
+            "min": 0.33127229199999997,
+            "max": 0.33127229199999997
+          },
+          "engine_container_seconds": {
+            "median": 0.224108,
+            "min": 0.224108,
+            "max": 0.224108
+          },
+          "peak_rss_bytes": {
+            "median": 186281984,
+            "min": 186281984,
+            "max": 186281984
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 57118720,
+            "min": 57118720,
+            "max": 57118720
+          },
+          "user_cpu_seconds": {
+            "median": 0.07385699999999999,
+            "min": 0.07385699999999999,
+            "max": 0.07385699999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.089033,
+            "min": 0.089033,
+            "max": 0.089033
+          }
+        },
+        "jdk25_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.427045749995159,
+            "min": 0.427045749995159,
+            "max": 0.427045749995159
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.53008975,
+            "min": 0.53008975,
+            "max": 0.53008975
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.585077083,
+            "min": 0.585077083,
+            "max": 0.585077083
+          },
+          "engine_container_seconds": {
+            "median": 0.476666,
+            "min": 0.476666,
+            "max": 0.476666
+          },
+          "peak_rss_bytes": {
+            "median": 102211584,
+            "min": 102211584,
+            "max": 102211584
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 87355392,
+            "min": 87355392,
+            "max": 87355392
+          },
+          "user_cpu_seconds": {
+            "median": 0.72965,
+            "min": 0.72965,
+            "max": 0.72965
+          },
+          "system_cpu_seconds": {
+            "median": 0.074391,
+            "min": 0.074391,
+            "max": 0.074391
+          }
+        },
+        "jdk25_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.5713369169970974,
+            "min": 0.5713369169970974,
+            "max": 0.5713369169970974
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.684522834,
+            "min": 0.684522834,
+            "max": 0.684522834
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.7410721249999999,
+            "min": 0.7410721249999999,
+            "max": 0.7410721249999999
+          },
+          "engine_container_seconds": {
+            "median": 0.616785,
+            "min": 0.616785,
+            "max": 0.616785
+          },
+          "peak_rss_bytes": {
+            "median": 119947264,
+            "min": 119947264,
+            "max": 119947264
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 104841216,
+            "min": 104841216,
+            "max": 104841216
+          },
+          "user_cpu_seconds": {
+            "median": 1.001044,
+            "min": 1.001044,
+            "max": 1.001044
+          },
+          "system_cpu_seconds": {
+            "median": 0.067339,
+            "min": 0.067339,
+            "max": 0.067339
+          }
+        },
+        "jdk27_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.4414978330023587,
+            "min": 0.4414978330023587,
+            "max": 0.4414978330023587
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.5392468749999999,
+            "min": 0.5392468749999999,
+            "max": 0.5392468749999999
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.5973320419999997,
+            "min": 0.5973320419999997,
+            "max": 0.5973320419999997
+          },
+          "engine_container_seconds": {
+            "median": 0.487554,
+            "min": 0.487554,
+            "max": 0.487554
+          },
+          "peak_rss_bytes": {
+            "median": 131362816,
+            "min": 131362816,
+            "max": 131362816
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 115867648,
+            "min": 115867648,
+            "max": 115867648
+          },
+          "user_cpu_seconds": {
+            "median": 0.7708349999999999,
+            "min": 0.7708349999999999,
+            "max": 0.7708349999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.081939,
+            "min": 0.081939,
+            "max": 0.081939
+          }
+        },
+        "jdk27_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.5938797080016229,
+            "min": 0.5938797080016229,
+            "max": 0.5938797080016229
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.7007900410000003,
+            "min": 0.7007900410000003,
+            "max": 0.7007900410000003
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.7477704160000003,
+            "min": 0.7477704160000003,
+            "max": 0.7477704160000003
+          },
+          "engine_container_seconds": {
+            "median": 0.650486,
+            "min": 0.650486,
+            "max": 0.650486
+          },
+          "peak_rss_bytes": {
+            "median": 188080128,
+            "min": 188080128,
+            "max": 188080128
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 172273664,
+            "min": 172273664,
+            "max": 172273664
+          },
+          "user_cpu_seconds": {
+            "median": 1.1074,
+            "min": 1.1074,
+            "max": 1.1074
+          },
+          "system_cpu_seconds": {
+            "median": 0.062816,
+            "min": 0.062816,
+            "max": 0.062816
+          }
+        },
+        "jdk27_aot_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.254288791998988,
+            "min": 0.254288791998988,
+            "max": 0.254288791998988
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.36583166700000014,
+            "min": 0.36583166700000014,
+            "max": 0.36583166700000014
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.41496620900000014,
+            "min": 0.41496620900000014,
+            "max": 0.41496620900000014
+          },
+          "engine_container_seconds": {
+            "median": 0.31568,
+            "min": 0.31568,
+            "max": 0.31568
+          },
+          "peak_rss_bytes": {
+            "median": 111726592,
+            "min": 111726592,
+            "max": 111726592
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 127868928,
+            "min": 127868928,
+            "max": 127868928
+          },
+          "user_cpu_seconds": {
+            "median": 0.450694,
+            "min": 0.450694,
+            "max": 0.450694
+          },
+          "system_cpu_seconds": {
+            "median": 0.054445999999999994,
+            "min": 0.054445999999999994,
+            "max": 0.054445999999999994
+          }
+        },
+        "jdk27_aot_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.3685055419919081,
+            "min": 0.3685055419919081,
+            "max": 0.3685055419919081
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.4692437079999996,
+            "min": 0.4692437079999996,
+            "max": 0.4692437079999996
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.5156394579999999,
+            "min": 0.5156394579999999,
+            "max": 0.5156394579999999
+          },
+          "engine_container_seconds": {
+            "median": 0.411794,
+            "min": 0.411794,
+            "max": 0.411794
+          },
+          "peak_rss_bytes": {
+            "median": 136474624,
+            "min": 136474624,
+            "max": 136474624
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 159313920,
+            "min": 159313920,
+            "max": 159313920
+          },
+          "user_cpu_seconds": {
+            "median": 0.6777869999999999,
+            "min": 0.6777869999999999,
+            "max": 0.6777869999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.082706,
+            "min": 0.082706,
+            "max": 0.082706
+          }
+        },
+        "jdk27_aotserial_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.24439441700815223,
+            "min": 0.24439441700815223,
+            "max": 0.24439441700815223
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.35291633300000047,
+            "min": 0.35291633300000047,
+            "max": 0.35291633300000047
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.4047526240000012,
+            "min": 0.4047526240000012,
+            "max": 0.4047526240000012
+          },
+          "engine_container_seconds": {
+            "median": 0.298225,
+            "min": 0.298225,
+            "max": 0.298225
+          },
+          "peak_rss_bytes": {
+            "median": 99119104,
+            "min": 99119104,
+            "max": 99119104
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 116490240,
+            "min": 116490240,
+            "max": 116490240
+          },
+          "user_cpu_seconds": {
+            "median": 0.43068,
+            "min": 0.43068,
+            "max": 0.43068
+          },
+          "system_cpu_seconds": {
+            "median": 0.051802999999999995,
+            "min": 0.051802999999999995,
+            "max": 0.051802999999999995
+          }
+        },
+        "jdk27_aotserial_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.36163641698658466,
+            "min": 0.36163641698658466,
+            "max": 0.36163641698658466
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.46942020799999984,
+            "min": 0.46942020799999984,
+            "max": 0.46942020799999984
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.6032142909999996,
+            "min": 0.6032142909999996,
+            "max": 0.6032142909999996
+          },
+          "engine_container_seconds": {
+            "median": 0.410317,
+            "min": 0.410317,
+            "max": 0.410317
+          },
+          "peak_rss_bytes": {
+            "median": 109203456,
+            "min": 109203456,
+            "max": 109203456
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 134336512,
+            "min": 134336512,
+            "max": 134336512
+          },
+          "user_cpu_seconds": {
+            "median": 0.6213409999999999,
+            "min": 0.6213409999999999,
+            "max": 0.6213409999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.049423999999999996,
+            "min": 0.049423999999999996,
+            "max": 0.049423999999999996
+          }
+        },
+        "jdk27_eager_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.24784024999826215,
+            "min": 0.24784024999826215,
+            "max": 0.24784024999826215
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.35254412500000054,
+            "min": 0.35254412500000054,
+            "max": 0.35254412500000054
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.39903358400000055,
+            "min": 0.39903358400000055,
+            "max": 0.39903358400000055
+          },
+          "engine_container_seconds": {
+            "median": 0.300577,
+            "min": 0.300577,
+            "max": 0.300577
+          },
+          "peak_rss_bytes": {
+            "median": 112287744,
+            "min": 112287744,
+            "max": 112287744
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 128475136,
+            "min": 128475136,
+            "max": 128475136
+          },
+          "user_cpu_seconds": {
+            "median": 0.484985,
+            "min": 0.484985,
+            "max": 0.484985
+          },
+          "system_cpu_seconds": {
+            "median": 0.044275999999999996,
+            "min": 0.044275999999999996,
+            "max": 0.044275999999999996
+          }
+        },
+        "jdk27_eager_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.36360354197677225,
+            "min": 0.36360354197677225,
+            "max": 0.36360354197677225
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.48691954199999987,
+            "min": 0.48691954199999987,
+            "max": 0.48691954199999987
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.541578874999999,
+            "min": 0.541578874999999,
+            "max": 0.541578874999999
+          },
+          "engine_container_seconds": {
+            "median": 0.42511,
+            "min": 0.42511,
+            "max": 0.42511
+          },
+          "peak_rss_bytes": {
+            "median": 138027008,
+            "min": 138027008,
+            "max": 138027008
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 160972800,
+            "min": 160972800,
+            "max": 160972800
+          },
+          "user_cpu_seconds": {
+            "median": 0.6881189999999999,
+            "min": 0.6881189999999999,
+            "max": 0.6881189999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.059182,
+            "min": 0.059182,
+            "max": 0.059182
+          }
+        },
+        "crac_cold_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.4224988750065677,
+            "min": 0.4224988750065677,
+            "max": 0.4224988750065677
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.5254366250000002,
+            "min": 0.5254366250000002,
+            "max": 0.5254366250000002
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.5706181670000001,
+            "min": 0.5706181670000001,
+            "max": 0.5706181670000001
+          },
+          "engine_container_seconds": {
+            "median": 0.476954,
+            "min": 0.476954,
+            "max": 0.476954
+          },
+          "peak_rss_bytes": {
+            "median": 98652160,
+            "min": 98652160,
+            "max": 98652160
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 84066304,
+            "min": 84066304,
+            "max": 84066304
+          },
+          "user_cpu_seconds": {
+            "median": 0.7713599999999999,
+            "min": 0.7713599999999999,
+            "max": 0.7713599999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.044482,
+            "min": 0.044482,
+            "max": 0.044482
+          }
+        },
+        "crac_cold_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.6069235840113834,
+            "min": 0.6069235840113834,
+            "max": 0.6069235840113834
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.7160647920000001,
+            "min": 0.7160647920000001,
+            "max": 0.7160647920000001
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.7646053750000004,
+            "min": 0.7646053750000004,
+            "max": 0.7646053750000004
+          },
+          "engine_container_seconds": {
+            "median": 0.66759,
+            "min": 0.66759,
+            "max": 0.66759
+          },
+          "peak_rss_bytes": {
+            "median": 122875904,
+            "min": 122875904,
+            "max": 122875904
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 107921408,
+            "min": 107921408,
+            "max": 107921408
+          },
+          "user_cpu_seconds": {
+            "median": 1.128948,
+            "min": 1.128948,
+            "max": 1.128948
+          },
+          "system_cpu_seconds": {
+            "median": 0.048910999999999996,
+            "min": 0.048910999999999996,
+            "max": 0.048910999999999996
+          }
+        },
+        "crac_restore_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.08257916700677015,
+            "min": 0.08257916700677015,
+            "max": 0.08257916700677015
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.1884576659999997,
+            "min": 0.1884576659999997,
+            "max": 0.1884576659999997
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.23855158299999957,
+            "min": 0.23855158299999957,
+            "max": 0.23855158299999957
+          },
+          "engine_container_seconds": {
+            "median": 0.139106,
+            "min": 0.139106,
+            "max": 0.139106
+          },
+          "peak_rss_bytes": {
+            "median": 87580672,
+            "min": 87580672,
+            "max": 87580672
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 111542272,
+            "min": 111542272,
+            "max": 111542272
+          },
+          "user_cpu_seconds": {
+            "median": 0.077859,
+            "min": 0.077859,
+            "max": 0.077859
+          },
+          "system_cpu_seconds": {
+            "median": 0.042003,
+            "min": 0.042003,
+            "max": 0.042003
+          }
+        },
+        "crac_restore_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.11323058299603872,
+            "min": 0.11323058299603872,
+            "max": 0.11323058299603872
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.2347962920000004,
+            "min": 0.2347962920000004,
+            "max": 0.2347962920000004
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.29496808400000063,
+            "min": 0.29496808400000063,
+            "max": 0.29496808400000063
+          },
+          "engine_container_seconds": {
+            "median": 0.168026,
+            "min": 0.168026,
+            "max": 0.168026
+          },
+          "peak_rss_bytes": {
+            "median": 103219200,
+            "min": 103219200,
+            "max": 103219200
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 128561152,
+            "min": 128561152,
+            "max": 128561152
+          },
+          "user_cpu_seconds": {
+            "median": 0.128493,
+            "min": 0.128493,
+            "max": 0.128493
+          },
+          "system_cpu_seconds": {
+            "median": 0.062752,
+            "min": 0.062752,
+            "max": 0.062752
+          }
+        },
+        "jdk28_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.43660416701459326,
+            "min": 0.43660416701459326,
+            "max": 0.43660416701459326
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.5417634170000003,
+            "min": 0.5417634170000003,
+            "max": 0.5417634170000003
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.6067397920000008,
+            "min": 0.6067397920000008,
+            "max": 0.6067397920000008
+          },
+          "engine_container_seconds": {
+            "median": 0.487471,
+            "min": 0.487471,
+            "max": 0.487471
+          },
+          "peak_rss_bytes": {
+            "median": 121507840,
+            "min": 121507840,
+            "max": 121507840
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 105381888,
+            "min": 105381888,
+            "max": 105381888
+          },
+          "user_cpu_seconds": {
+            "median": 0.807097,
+            "min": 0.807097,
+            "max": 0.807097
+          },
+          "system_cpu_seconds": {
+            "median": 0.046234,
+            "min": 0.046234,
+            "max": 0.046234
+          }
+        },
+        "jdk28_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.6359310419938993,
+            "min": 0.6359310419938993,
+            "max": 0.6359310419938993
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.7425805420000007,
+            "min": 0.7425805420000007,
+            "max": 0.7425805420000007
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.789540167000002,
+            "min": 0.789540167000002,
+            "max": 0.789540167000002
+          },
+          "engine_container_seconds": {
+            "median": 0.694417,
+            "min": 0.694417,
+            "max": 0.694417
+          },
+          "peak_rss_bytes": {
+            "median": 183537664,
+            "min": 183537664,
+            "max": 183537664
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 166993920,
+            "min": 166993920,
+            "max": 166993920
+          },
+          "user_cpu_seconds": {
+            "median": 1.181094,
+            "min": 1.181094,
+            "max": 1.181094
+          },
+          "system_cpu_seconds": {
+            "median": 0.058053,
+            "min": 0.058053,
+            "max": 0.058053
+          }
+        },
+        "jdk28_aot_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.23646133299916983,
+            "min": 0.23646133299916983,
+            "max": 0.23646133299916983
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.34696295900000074,
+            "min": 0.34696295900000074,
+            "max": 0.34696295900000074
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.40066645900000175,
+            "min": 0.40066645900000175,
+            "max": 0.40066645900000175
+          },
+          "engine_container_seconds": {
+            "median": 0.295767,
+            "min": 0.295767,
+            "max": 0.295767
+          },
+          "peak_rss_bytes": {
+            "median": 108748800,
+            "min": 108748800,
+            "max": 108748800
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 83697664,
+            "min": 83697664,
+            "max": 83697664
+          },
+          "user_cpu_seconds": {
+            "median": 0.363543,
+            "min": 0.363543,
+            "max": 0.363543
+          },
+          "system_cpu_seconds": {
+            "median": 0.077974,
+            "min": 0.077974,
+            "max": 0.077974
+          }
+        },
+        "jdk28_aot_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.3565502919955179,
+            "min": 0.3565502919955179,
+            "max": 0.3565502919955179
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.47922483299999996,
+            "min": 0.47922483299999996,
+            "max": 0.47922483299999996
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.5370433749999997,
+            "min": 0.5370433749999997,
+            "max": 0.5370433749999997
+          },
+          "engine_container_seconds": {
+            "median": 0.419957,
+            "min": 0.419957,
+            "max": 0.419957
+          },
+          "peak_rss_bytes": {
+            "median": 150663168,
+            "min": 150663168,
+            "max": 150663168
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 120922112,
+            "min": 120922112,
+            "max": 120922112
+          },
+          "user_cpu_seconds": {
+            "median": 0.590718,
+            "min": 0.590718,
+            "max": 0.590718
+          },
+          "system_cpu_seconds": {
+            "median": 0.074748,
+            "min": 0.074748,
+            "max": 0.074748
+          }
+        }
+      }
+    },
+    "hotloop": {
+      "runs": {
+        "interpreter": [
+          {
+            "mode": "interpreter",
+            "job": "hotloop",
+            "command": [
+              "/native/interpreter/gretl-crema",
+              "-Djava.home=/opt/graal",
+              "-Xms32m",
+              "-Xmx512m",
+              "run",
+              "/app/jobs/hotloop/hotloop.jar",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 1.9603605000011157,
+            "user_cpu_seconds": 1.924744,
+            "system_cpu_seconds": 0.035103999999999996,
+            "peak_rss_bytes": 170950656,
+            "cgroup_memory_peak_bytes": 71548928,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-38f8b05f1ebf",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.051107958999999425,
+            "docker_start_to_exit_seconds": 2.0701180420000007,
+            "docker_create_to_exit_seconds": 2.121226001,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 2.001073,
+            "round": 0
+          }
+        ],
+        "ristretto": [
+          {
+            "mode": "ristretto",
+            "job": "hotloop",
+            "command": [
+              "/native/ristretto/gretl-crema",
+              "-Djava.home=/opt/graal",
+              "-Xms32m",
+              "-Xmx512m",
+              "run",
+              "/app/jobs/hotloop/hotloop.jar",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 1.2905126670084428,
+            "user_cpu_seconds": 1.351491,
+            "system_cpu_seconds": 0.055637,
+            "peak_rss_bytes": 209657856,
+            "cgroup_memory_peak_bytes": 73854976,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-36492a62902a",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.11775570800000068,
+            "docker_start_to_exit_seconds": 1.3977915000000003,
+            "docker_create_to_exit_seconds": 1.515547208000001,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 1.336737,
+            "round": 0
+          }
+        ],
+        "jdk25_bytecode": [
+          {
+            "mode": "jdk25_bytecode",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk25/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/hotloop/hotloop.jar",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.36135716701392084,
+            "user_cpu_seconds": 0.661644,
+            "system_cpu_seconds": 0.027955999999999998,
+            "peak_rss_bytes": 91275264,
+            "cgroup_memory_peak_bytes": 76439552,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-3210c494102c",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04546712500000005,
+            "docker_start_to_exit_seconds": 0.45757370799999997,
+            "docker_create_to_exit_seconds": 0.503040833,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.405953,
+            "round": 0
+          }
+        ],
+        "jdk25_source": [
+          {
+            "mode": "jdk25_source",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk25/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/hotloop/hotloop.groovy",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.5682625840127002,
+            "user_cpu_seconds": 1.075933,
+            "system_cpu_seconds": 0.036588999999999997,
+            "peak_rss_bytes": 111972352,
+            "cgroup_memory_peak_bytes": 97333248,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-10e03156660c",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.0483612500000028,
+            "docker_start_to_exit_seconds": 0.6963451670000005,
+            "docker_create_to_exit_seconds": 0.7447064170000033,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.642104,
+            "round": 0
+          }
+        ],
+        "jdk27_bytecode": [
+          {
+            "mode": "jdk27_bytecode",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/hotloop/hotloop.jar",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.36882566698477603,
+            "user_cpu_seconds": 0.6808139999999999,
+            "system_cpu_seconds": 0.044911,
+            "peak_rss_bytes": 97386496,
+            "cgroup_memory_peak_bytes": 82051072,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-d3aef2dd6a10",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04962841700000098,
+            "docker_start_to_exit_seconds": 0.4754922499999985,
+            "docker_create_to_exit_seconds": 0.5251206669999995,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.421728,
+            "round": 0
+          }
+        ],
+        "jdk27_source": [
+          {
+            "mode": "jdk27_source",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/hotloop/hotloop.groovy",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.5787572509725578,
+            "user_cpu_seconds": 1.040856,
+            "system_cpu_seconds": 0.051843,
+            "peak_rss_bytes": 177016832,
+            "cgroup_memory_peak_bytes": 161533952,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-a9dedc212226",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.05286837500000274,
+            "docker_start_to_exit_seconds": 0.6890974169999993,
+            "docker_create_to_exit_seconds": 0.741965792000002,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.626161,
+            "round": 0
+          }
+        ],
+        "jdk27_aot_bytecode": [
+          {
+            "mode": "jdk27_aot_bytecode",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/hotloop-bytecode.aot",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/hotloop/hotloop.jar",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.2693345409934409,
+            "user_cpu_seconds": 0.519141,
+            "system_cpu_seconds": 0.049149,
+            "peak_rss_bytes": 107675648,
+            "cgroup_memory_peak_bytes": 117637120,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-b97f7a62c008",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.059577749999998986,
+            "docker_start_to_exit_seconds": 0.3818064589999999,
+            "docker_create_to_exit_seconds": 0.44138420899999886,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.325401,
+            "round": 0
+          }
+        ],
+        "jdk27_aot_source": [
+          {
+            "mode": "jdk27_aot_source",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/hotloop-source.aot",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/hotloop/hotloop.groovy",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.45210224998299964,
+            "user_cpu_seconds": 0.770695,
+            "system_cpu_seconds": 0.10908899999999999,
+            "peak_rss_bytes": 141099008,
+            "cgroup_memory_peak_bytes": 158466048,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-320651fc9ac6",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04965770800000158,
+            "docker_start_to_exit_seconds": 0.5516816660000003,
+            "docker_create_to_exit_seconds": 0.6013393740000019,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.497725,
+            "round": 0
+          }
+        ],
+        "jdk27_aotserial_bytecode": [
+          {
+            "mode": "jdk27_aotserial_bytecode",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/hotloop-bytecode-serial.aot",
+              "-XX:+UseSerialGC",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/hotloop/hotloop.jar",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.28019120800308883,
+            "user_cpu_seconds": 0.49399899999999997,
+            "system_cpu_seconds": 0.047191,
+            "peak_rss_bytes": 90402816,
+            "cgroup_memory_peak_bytes": 102113280,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-198ab6c15067",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04847037500000084,
+            "docker_start_to_exit_seconds": 0.3780357080000023,
+            "docker_create_to_exit_seconds": 0.42650608300000314,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.328096,
+            "round": 0
+          }
+        ],
+        "jdk27_aotserial_source": [
+          {
+            "mode": "jdk27_aotserial_source",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/hotloop-source-serial.aot",
+              "-XX:+UseSerialGC",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/hotloop/hotloop.groovy",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.40027358298539184,
+            "user_cpu_seconds": 0.7222179999999999,
+            "system_cpu_seconds": 0.049671,
+            "peak_rss_bytes": 99520512,
+            "cgroup_memory_peak_bytes": 118718464,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-43466f6df7bf",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.05219225000000094,
+            "docker_start_to_exit_seconds": 0.5018487500000006,
+            "docker_create_to_exit_seconds": 0.5540410000000016,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.451273,
+            "round": 0
+          }
+        ],
+        "jdk27_eager_bytecode": [
+          {
+            "mode": "jdk27_eager_bytecode",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/hotloop-bytecode-eager.aot",
+              "-XX:+UnlockExperimentalVMOptions",
+              "-XX:+AOTCompileEagerly",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/hotloop/hotloop.jar",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.31924679200164974,
+            "user_cpu_seconds": 0.558321,
+            "system_cpu_seconds": 0.046099,
+            "peak_rss_bytes": 105844736,
+            "cgroup_memory_peak_bytes": 116355072,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-3cb173c4e4fa",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.054639458000000474,
+            "docker_start_to_exit_seconds": 0.4164163750000007,
+            "docker_create_to_exit_seconds": 0.4710558330000012,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.365148,
+            "round": 0
+          }
+        ],
+        "jdk27_eager_source": [
+          {
+            "mode": "jdk27_eager_source",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk27/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/hotloop-source-eager.aot",
+              "-XX:+UnlockExperimentalVMOptions",
+              "-XX:+AOTCompileEagerly",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/hotloop/hotloop.groovy",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.4555620420142077,
+            "user_cpu_seconds": 0.8067209999999999,
+            "system_cpu_seconds": 0.080672,
+            "peak_rss_bytes": 143486976,
+            "cgroup_memory_peak_bytes": 161054720,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-7df2e225e709",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04995833300000285,
+            "docker_start_to_exit_seconds": 0.5719877090000018,
+            "docker_create_to_exit_seconds": 0.6219460420000047,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.521582,
+            "round": 0
+          }
+        ],
+        "crac_cold_bytecode": [
+          {
+            "mode": "crac_cold_bytecode",
+            "job": "hotloop",
+            "command": [
+              "/opt/crac25/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/support/classes:/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "bench.CracLauncher",
+              "bytecode",
+              "hotloop"
+            ],
+            "process_seconds": 0.39206212499993853,
+            "user_cpu_seconds": 0.725375,
+            "system_cpu_seconds": 0.033246,
+            "peak_rss_bytes": 91504640,
+            "cgroup_memory_peak_bytes": 77254656,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-209553a30b93",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.05320808399999777,
+            "docker_start_to_exit_seconds": 0.5015649579999995,
+            "docker_create_to_exit_seconds": 0.5547730419999972,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.452256,
+            "round": 0
+          }
+        ],
+        "crac_cold_source": [
+          {
+            "mode": "crac_cold_source",
+            "job": "hotloop",
+            "command": [
+              "/opt/crac25/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/support/classes:/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "bench.CracLauncher",
+              "source",
+              "hotloop"
+            ],
+            "process_seconds": 0.5960594589996617,
+            "user_cpu_seconds": 1.102209,
+            "system_cpu_seconds": 0.058117999999999996,
+            "peak_rss_bytes": 109469696,
+            "cgroup_memory_peak_bytes": 94687232,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-d4a2e27ef57f",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04681208299999895,
+            "docker_start_to_exit_seconds": 0.6880006670000007,
+            "docker_create_to_exit_seconds": 0.7348127499999997,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.64361,
+            "round": 0
+          }
+        ],
+        "crac_restore_bytecode": [
+          {
+            "mode": "crac_restore_bytecode",
+            "job": "hotloop",
+            "command": [
+              "/opt/crac25/bin/java",
+              "-XX:CRaCEngine=warp",
+              "-XX:CRaCRestoreFrom=/checkpoint/hotloop-bytecode"
+            ],
+            "process_seconds": 0.08838270898559131,
+            "user_cpu_seconds": 0.063597,
+            "system_cpu_seconds": 0.048921,
+            "peak_rss_bytes": 78544896,
+            "cgroup_memory_peak_bytes": 92688384,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "167013.151311: warp: Restore successful!\nCRAC_RESTORE_OK\ngretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-e7ac709a2994",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.048485167000002605,
+            "docker_start_to_exit_seconds": 0.18737333300000003,
+            "docker_create_to_exit_seconds": 0.23585850000000264,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.134809,
+            "round": 0
+          }
+        ],
+        "crac_restore_source": [
+          {
+            "mode": "crac_restore_source",
+            "job": "hotloop",
+            "command": [
+              "/opt/crac25/bin/java",
+              "-XX:CRaCEngine=warp",
+              "-XX:CRaCRestoreFrom=/checkpoint/hotloop-source"
+            ],
+            "process_seconds": 0.10109129201737233,
+            "user_cpu_seconds": 0.11154499999999999,
+            "system_cpu_seconds": 0.064035,
+            "peak_rss_bytes": 104480768,
+            "cgroup_memory_peak_bytes": 129777664,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "167013.487243: warp: Restore successful!\nCRAC_RESTORE_OK\ngretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-b548919f6598",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.0639707499999993,
+            "docker_start_to_exit_seconds": 0.21548145900000293,
+            "docker_create_to_exit_seconds": 0.2794522090000022,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.151747,
+            "round": 0
+          }
+        ],
+        "jdk28_bytecode": [
+          {
+            "mode": "jdk28_bytecode",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk28/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/hotloop/hotloop.jar",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.4082135839853436,
+            "user_cpu_seconds": 0.7539739999999999,
+            "system_cpu_seconds": 0.04612,
+            "peak_rss_bytes": 117559296,
+            "cgroup_memory_peak_bytes": 100904960,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-723c8263cadd",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.052300875000000246,
+            "docker_start_to_exit_seconds": 0.520289708,
+            "docker_create_to_exit_seconds": 0.5725905830000002,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.467735,
+            "round": 0
+          }
+        ],
+        "jdk28_source": [
+          {
+            "mode": "jdk28_source",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk28/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/hotloop/hotloop.groovy",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.6116095010074787,
+            "user_cpu_seconds": 1.12964,
+            "system_cpu_seconds": 0.09045099999999999,
+            "peak_rss_bytes": 178524160,
+            "cgroup_memory_peak_bytes": 161988608,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-609f3c622b5f",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.052491291999999135,
+            "docker_start_to_exit_seconds": 0.730644625,
+            "docker_create_to_exit_seconds": 0.7831359169999992,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.669506,
+            "round": 0
+          }
+        ],
+        "jdk28_aot_bytecode": [
+          {
+            "mode": "jdk28_aot_bytecode",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk28/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/hotloop-bytecode-jdk28.aot",
+              "-cp",
+              "/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.runner.Main",
+              "run",
+              "/app/jobs/hotloop/hotloop.jar",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.235019417013973,
+            "user_cpu_seconds": 0.390188,
+            "system_cpu_seconds": 0.053675999999999995,
+            "peak_rss_bytes": 97558528,
+            "cgroup_memory_peak_bytes": 74293248,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-838053f3e58d",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.046065333000001374,
+            "docker_start_to_exit_seconds": 0.3290092080000022,
+            "docker_create_to_exit_seconds": 0.3750745410000036,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.279945,
+            "round": 0
+          }
+        ],
+        "jdk28_aot_source": [
+          {
+            "mode": "jdk28_aot_source",
+            "job": "hotloop",
+            "command": [
+              "/opt/jdk28/bin/java",
+              "-Xms32m",
+              "-Xmx512m",
+              "-XX:AOTMode=required",
+              "-XX:AOTCache=/aot/hotloop-source-jdk28.aot",
+              "-cp",
+              "/app/compiler/compiler.jar:/app/runtime/runner.jar:/app/runtime/lib/crema-core-0.1.0-SNAPSHOT.jar:/app/runtime/lib/groovy-6.0.0.jar:/app/runtime/lib/h2-2.3.232.jar",
+              "ch.so.agi.gretl.crema.compiler.SourceMain",
+              "run",
+              "/app/jobs/hotloop/hotloop.groovy",
+              "--job-root",
+              "/app/jobs/hotloop",
+              "--db",
+              "/work/measured-db",
+              "--param",
+              "iterations=100000"
+            ],
+            "process_seconds": 0.36635191598907113,
+            "user_cpu_seconds": 0.619429,
+            "system_cpu_seconds": 0.088196,
+            "peak_rss_bytes": 151769088,
+            "cgroup_memory_peak_bytes": 124325888,
+            "cgroup_memory_limit_bytes": 1073741824,
+            "cgroup_cpu_max": "200000 100000",
+            "cgroup_memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+            "exit_code": 0,
+            "output": "gretl.task.started task=rechnen null\nHOTLOOP_OK 326690737\ngretl.task.finished task=rechnen SUCCEEDED\njob.status=SUCCEEDED\n",
+            "passed": true,
+            "container": "gretl-crema-bench-61c0ec46aa09",
+            "image_id": "sha256:6f3dafc4ebcf2193349ae1c04989f4d2947a32d05caa7a01bb81bc52bdbe04de",
+            "docker_create_seconds": 0.04954645799999824,
+            "docker_start_to_exit_seconds": 0.46624804100000006,
+            "docker_create_to_exit_seconds": 0.5157944989999983,
+            "container_oom_killed": false,
+            "container_exit_code": 0,
+            "docker_cli_exit_code": 0,
+            "limits": {
+              "NanoCpus": 2000000000,
+              "Memory": 1073741824,
+              "MemorySwap": 1073741824,
+              "PidsLimit": 512
+            },
+            "engine_container_seconds": 0.413743,
+            "round": 0
+          }
+        ]
+      },
+      "warmup_failures": [],
+      "summary": {
+        "interpreter": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 1.9603605000011157,
+            "min": 1.9603605000011157,
+            "max": 1.9603605000011157
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 2.0701180420000007,
+            "min": 2.0701180420000007,
+            "max": 2.0701180420000007
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 2.121226001,
+            "min": 2.121226001,
+            "max": 2.121226001
+          },
+          "engine_container_seconds": {
+            "median": 2.001073,
+            "min": 2.001073,
+            "max": 2.001073
+          },
+          "peak_rss_bytes": {
+            "median": 170950656,
+            "min": 170950656,
+            "max": 170950656
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 71548928,
+            "min": 71548928,
+            "max": 71548928
+          },
+          "user_cpu_seconds": {
+            "median": 1.924744,
+            "min": 1.924744,
+            "max": 1.924744
+          },
+          "system_cpu_seconds": {
+            "median": 0.035103999999999996,
+            "min": 0.035103999999999996,
+            "max": 0.035103999999999996
+          }
+        },
+        "ristretto": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 1.2905126670084428,
+            "min": 1.2905126670084428,
+            "max": 1.2905126670084428
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 1.3977915000000003,
+            "min": 1.3977915000000003,
+            "max": 1.3977915000000003
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 1.515547208000001,
+            "min": 1.515547208000001,
+            "max": 1.515547208000001
+          },
+          "engine_container_seconds": {
+            "median": 1.336737,
+            "min": 1.336737,
+            "max": 1.336737
+          },
+          "peak_rss_bytes": {
+            "median": 209657856,
+            "min": 209657856,
+            "max": 209657856
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 73854976,
+            "min": 73854976,
+            "max": 73854976
+          },
+          "user_cpu_seconds": {
+            "median": 1.351491,
+            "min": 1.351491,
+            "max": 1.351491
+          },
+          "system_cpu_seconds": {
+            "median": 0.055637,
+            "min": 0.055637,
+            "max": 0.055637
+          }
+        },
+        "jdk25_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.36135716701392084,
+            "min": 0.36135716701392084,
+            "max": 0.36135716701392084
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.45757370799999997,
+            "min": 0.45757370799999997,
+            "max": 0.45757370799999997
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.503040833,
+            "min": 0.503040833,
+            "max": 0.503040833
+          },
+          "engine_container_seconds": {
+            "median": 0.405953,
+            "min": 0.405953,
+            "max": 0.405953
+          },
+          "peak_rss_bytes": {
+            "median": 91275264,
+            "min": 91275264,
+            "max": 91275264
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 76439552,
+            "min": 76439552,
+            "max": 76439552
+          },
+          "user_cpu_seconds": {
+            "median": 0.661644,
+            "min": 0.661644,
+            "max": 0.661644
+          },
+          "system_cpu_seconds": {
+            "median": 0.027955999999999998,
+            "min": 0.027955999999999998,
+            "max": 0.027955999999999998
+          }
+        },
+        "jdk25_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.5682625840127002,
+            "min": 0.5682625840127002,
+            "max": 0.5682625840127002
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.6963451670000005,
+            "min": 0.6963451670000005,
+            "max": 0.6963451670000005
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.7447064170000033,
+            "min": 0.7447064170000033,
+            "max": 0.7447064170000033
+          },
+          "engine_container_seconds": {
+            "median": 0.642104,
+            "min": 0.642104,
+            "max": 0.642104
+          },
+          "peak_rss_bytes": {
+            "median": 111972352,
+            "min": 111972352,
+            "max": 111972352
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 97333248,
+            "min": 97333248,
+            "max": 97333248
+          },
+          "user_cpu_seconds": {
+            "median": 1.075933,
+            "min": 1.075933,
+            "max": 1.075933
+          },
+          "system_cpu_seconds": {
+            "median": 0.036588999999999997,
+            "min": 0.036588999999999997,
+            "max": 0.036588999999999997
+          }
+        },
+        "jdk27_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.36882566698477603,
+            "min": 0.36882566698477603,
+            "max": 0.36882566698477603
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.4754922499999985,
+            "min": 0.4754922499999985,
+            "max": 0.4754922499999985
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.5251206669999995,
+            "min": 0.5251206669999995,
+            "max": 0.5251206669999995
+          },
+          "engine_container_seconds": {
+            "median": 0.421728,
+            "min": 0.421728,
+            "max": 0.421728
+          },
+          "peak_rss_bytes": {
+            "median": 97386496,
+            "min": 97386496,
+            "max": 97386496
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 82051072,
+            "min": 82051072,
+            "max": 82051072
+          },
+          "user_cpu_seconds": {
+            "median": 0.6808139999999999,
+            "min": 0.6808139999999999,
+            "max": 0.6808139999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.044911,
+            "min": 0.044911,
+            "max": 0.044911
+          }
+        },
+        "jdk27_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.5787572509725578,
+            "min": 0.5787572509725578,
+            "max": 0.5787572509725578
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.6890974169999993,
+            "min": 0.6890974169999993,
+            "max": 0.6890974169999993
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.741965792000002,
+            "min": 0.741965792000002,
+            "max": 0.741965792000002
+          },
+          "engine_container_seconds": {
+            "median": 0.626161,
+            "min": 0.626161,
+            "max": 0.626161
+          },
+          "peak_rss_bytes": {
+            "median": 177016832,
+            "min": 177016832,
+            "max": 177016832
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 161533952,
+            "min": 161533952,
+            "max": 161533952
+          },
+          "user_cpu_seconds": {
+            "median": 1.040856,
+            "min": 1.040856,
+            "max": 1.040856
+          },
+          "system_cpu_seconds": {
+            "median": 0.051843,
+            "min": 0.051843,
+            "max": 0.051843
+          }
+        },
+        "jdk27_aot_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.2693345409934409,
+            "min": 0.2693345409934409,
+            "max": 0.2693345409934409
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.3818064589999999,
+            "min": 0.3818064589999999,
+            "max": 0.3818064589999999
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.44138420899999886,
+            "min": 0.44138420899999886,
+            "max": 0.44138420899999886
+          },
+          "engine_container_seconds": {
+            "median": 0.325401,
+            "min": 0.325401,
+            "max": 0.325401
+          },
+          "peak_rss_bytes": {
+            "median": 107675648,
+            "min": 107675648,
+            "max": 107675648
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 117637120,
+            "min": 117637120,
+            "max": 117637120
+          },
+          "user_cpu_seconds": {
+            "median": 0.519141,
+            "min": 0.519141,
+            "max": 0.519141
+          },
+          "system_cpu_seconds": {
+            "median": 0.049149,
+            "min": 0.049149,
+            "max": 0.049149
+          }
+        },
+        "jdk27_aot_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.45210224998299964,
+            "min": 0.45210224998299964,
+            "max": 0.45210224998299964
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.5516816660000003,
+            "min": 0.5516816660000003,
+            "max": 0.5516816660000003
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.6013393740000019,
+            "min": 0.6013393740000019,
+            "max": 0.6013393740000019
+          },
+          "engine_container_seconds": {
+            "median": 0.497725,
+            "min": 0.497725,
+            "max": 0.497725
+          },
+          "peak_rss_bytes": {
+            "median": 141099008,
+            "min": 141099008,
+            "max": 141099008
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 158466048,
+            "min": 158466048,
+            "max": 158466048
+          },
+          "user_cpu_seconds": {
+            "median": 0.770695,
+            "min": 0.770695,
+            "max": 0.770695
+          },
+          "system_cpu_seconds": {
+            "median": 0.10908899999999999,
+            "min": 0.10908899999999999,
+            "max": 0.10908899999999999
+          }
+        },
+        "jdk27_aotserial_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.28019120800308883,
+            "min": 0.28019120800308883,
+            "max": 0.28019120800308883
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.3780357080000023,
+            "min": 0.3780357080000023,
+            "max": 0.3780357080000023
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.42650608300000314,
+            "min": 0.42650608300000314,
+            "max": 0.42650608300000314
+          },
+          "engine_container_seconds": {
+            "median": 0.328096,
+            "min": 0.328096,
+            "max": 0.328096
+          },
+          "peak_rss_bytes": {
+            "median": 90402816,
+            "min": 90402816,
+            "max": 90402816
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 102113280,
+            "min": 102113280,
+            "max": 102113280
+          },
+          "user_cpu_seconds": {
+            "median": 0.49399899999999997,
+            "min": 0.49399899999999997,
+            "max": 0.49399899999999997
+          },
+          "system_cpu_seconds": {
+            "median": 0.047191,
+            "min": 0.047191,
+            "max": 0.047191
+          }
+        },
+        "jdk27_aotserial_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.40027358298539184,
+            "min": 0.40027358298539184,
+            "max": 0.40027358298539184
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.5018487500000006,
+            "min": 0.5018487500000006,
+            "max": 0.5018487500000006
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.5540410000000016,
+            "min": 0.5540410000000016,
+            "max": 0.5540410000000016
+          },
+          "engine_container_seconds": {
+            "median": 0.451273,
+            "min": 0.451273,
+            "max": 0.451273
+          },
+          "peak_rss_bytes": {
+            "median": 99520512,
+            "min": 99520512,
+            "max": 99520512
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 118718464,
+            "min": 118718464,
+            "max": 118718464
+          },
+          "user_cpu_seconds": {
+            "median": 0.7222179999999999,
+            "min": 0.7222179999999999,
+            "max": 0.7222179999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.049671,
+            "min": 0.049671,
+            "max": 0.049671
+          }
+        },
+        "jdk27_eager_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.31924679200164974,
+            "min": 0.31924679200164974,
+            "max": 0.31924679200164974
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.4164163750000007,
+            "min": 0.4164163750000007,
+            "max": 0.4164163750000007
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.4710558330000012,
+            "min": 0.4710558330000012,
+            "max": 0.4710558330000012
+          },
+          "engine_container_seconds": {
+            "median": 0.365148,
+            "min": 0.365148,
+            "max": 0.365148
+          },
+          "peak_rss_bytes": {
+            "median": 105844736,
+            "min": 105844736,
+            "max": 105844736
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 116355072,
+            "min": 116355072,
+            "max": 116355072
+          },
+          "user_cpu_seconds": {
+            "median": 0.558321,
+            "min": 0.558321,
+            "max": 0.558321
+          },
+          "system_cpu_seconds": {
+            "median": 0.046099,
+            "min": 0.046099,
+            "max": 0.046099
+          }
+        },
+        "jdk27_eager_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.4555620420142077,
+            "min": 0.4555620420142077,
+            "max": 0.4555620420142077
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.5719877090000018,
+            "min": 0.5719877090000018,
+            "max": 0.5719877090000018
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.6219460420000047,
+            "min": 0.6219460420000047,
+            "max": 0.6219460420000047
+          },
+          "engine_container_seconds": {
+            "median": 0.521582,
+            "min": 0.521582,
+            "max": 0.521582
+          },
+          "peak_rss_bytes": {
+            "median": 143486976,
+            "min": 143486976,
+            "max": 143486976
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 161054720,
+            "min": 161054720,
+            "max": 161054720
+          },
+          "user_cpu_seconds": {
+            "median": 0.8067209999999999,
+            "min": 0.8067209999999999,
+            "max": 0.8067209999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.080672,
+            "min": 0.080672,
+            "max": 0.080672
+          }
+        },
+        "crac_cold_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.39206212499993853,
+            "min": 0.39206212499993853,
+            "max": 0.39206212499993853
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.5015649579999995,
+            "min": 0.5015649579999995,
+            "max": 0.5015649579999995
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.5547730419999972,
+            "min": 0.5547730419999972,
+            "max": 0.5547730419999972
+          },
+          "engine_container_seconds": {
+            "median": 0.452256,
+            "min": 0.452256,
+            "max": 0.452256
+          },
+          "peak_rss_bytes": {
+            "median": 91504640,
+            "min": 91504640,
+            "max": 91504640
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 77254656,
+            "min": 77254656,
+            "max": 77254656
+          },
+          "user_cpu_seconds": {
+            "median": 0.725375,
+            "min": 0.725375,
+            "max": 0.725375
+          },
+          "system_cpu_seconds": {
+            "median": 0.033246,
+            "min": 0.033246,
+            "max": 0.033246
+          }
+        },
+        "crac_cold_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.5960594589996617,
+            "min": 0.5960594589996617,
+            "max": 0.5960594589996617
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.6880006670000007,
+            "min": 0.6880006670000007,
+            "max": 0.6880006670000007
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.7348127499999997,
+            "min": 0.7348127499999997,
+            "max": 0.7348127499999997
+          },
+          "engine_container_seconds": {
+            "median": 0.64361,
+            "min": 0.64361,
+            "max": 0.64361
+          },
+          "peak_rss_bytes": {
+            "median": 109469696,
+            "min": 109469696,
+            "max": 109469696
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 94687232,
+            "min": 94687232,
+            "max": 94687232
+          },
+          "user_cpu_seconds": {
+            "median": 1.102209,
+            "min": 1.102209,
+            "max": 1.102209
+          },
+          "system_cpu_seconds": {
+            "median": 0.058117999999999996,
+            "min": 0.058117999999999996,
+            "max": 0.058117999999999996
+          }
+        },
+        "crac_restore_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.08838270898559131,
+            "min": 0.08838270898559131,
+            "max": 0.08838270898559131
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.18737333300000003,
+            "min": 0.18737333300000003,
+            "max": 0.18737333300000003
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.23585850000000264,
+            "min": 0.23585850000000264,
+            "max": 0.23585850000000264
+          },
+          "engine_container_seconds": {
+            "median": 0.134809,
+            "min": 0.134809,
+            "max": 0.134809
+          },
+          "peak_rss_bytes": {
+            "median": 78544896,
+            "min": 78544896,
+            "max": 78544896
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 92688384,
+            "min": 92688384,
+            "max": 92688384
+          },
+          "user_cpu_seconds": {
+            "median": 0.063597,
+            "min": 0.063597,
+            "max": 0.063597
+          },
+          "system_cpu_seconds": {
+            "median": 0.048921,
+            "min": 0.048921,
+            "max": 0.048921
+          }
+        },
+        "crac_restore_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.10109129201737233,
+            "min": 0.10109129201737233,
+            "max": 0.10109129201737233
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.21548145900000293,
+            "min": 0.21548145900000293,
+            "max": 0.21548145900000293
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.2794522090000022,
+            "min": 0.2794522090000022,
+            "max": 0.2794522090000022
+          },
+          "engine_container_seconds": {
+            "median": 0.151747,
+            "min": 0.151747,
+            "max": 0.151747
+          },
+          "peak_rss_bytes": {
+            "median": 104480768,
+            "min": 104480768,
+            "max": 104480768
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 129777664,
+            "min": 129777664,
+            "max": 129777664
+          },
+          "user_cpu_seconds": {
+            "median": 0.11154499999999999,
+            "min": 0.11154499999999999,
+            "max": 0.11154499999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.064035,
+            "min": 0.064035,
+            "max": 0.064035
+          }
+        },
+        "jdk28_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.4082135839853436,
+            "min": 0.4082135839853436,
+            "max": 0.4082135839853436
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.520289708,
+            "min": 0.520289708,
+            "max": 0.520289708
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.5725905830000002,
+            "min": 0.5725905830000002,
+            "max": 0.5725905830000002
+          },
+          "engine_container_seconds": {
+            "median": 0.467735,
+            "min": 0.467735,
+            "max": 0.467735
+          },
+          "peak_rss_bytes": {
+            "median": 117559296,
+            "min": 117559296,
+            "max": 117559296
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 100904960,
+            "min": 100904960,
+            "max": 100904960
+          },
+          "user_cpu_seconds": {
+            "median": 0.7539739999999999,
+            "min": 0.7539739999999999,
+            "max": 0.7539739999999999
+          },
+          "system_cpu_seconds": {
+            "median": 0.04612,
+            "min": 0.04612,
+            "max": 0.04612
+          }
+        },
+        "jdk28_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.6116095010074787,
+            "min": 0.6116095010074787,
+            "max": 0.6116095010074787
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.730644625,
+            "min": 0.730644625,
+            "max": 0.730644625
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.7831359169999992,
+            "min": 0.7831359169999992,
+            "max": 0.7831359169999992
+          },
+          "engine_container_seconds": {
+            "median": 0.669506,
+            "min": 0.669506,
+            "max": 0.669506
+          },
+          "peak_rss_bytes": {
+            "median": 178524160,
+            "min": 178524160,
+            "max": 178524160
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 161988608,
+            "min": 161988608,
+            "max": 161988608
+          },
+          "user_cpu_seconds": {
+            "median": 1.12964,
+            "min": 1.12964,
+            "max": 1.12964
+          },
+          "system_cpu_seconds": {
+            "median": 0.09045099999999999,
+            "min": 0.09045099999999999,
+            "max": 0.09045099999999999
+          }
+        },
+        "jdk28_aot_bytecode": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.235019417013973,
+            "min": 0.235019417013973,
+            "max": 0.235019417013973
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.3290092080000022,
+            "min": 0.3290092080000022,
+            "max": 0.3290092080000022
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.3750745410000036,
+            "min": 0.3750745410000036,
+            "max": 0.3750745410000036
+          },
+          "engine_container_seconds": {
+            "median": 0.279945,
+            "min": 0.279945,
+            "max": 0.279945
+          },
+          "peak_rss_bytes": {
+            "median": 97558528,
+            "min": 97558528,
+            "max": 97558528
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 74293248,
+            "min": 74293248,
+            "max": 74293248
+          },
+          "user_cpu_seconds": {
+            "median": 0.390188,
+            "min": 0.390188,
+            "max": 0.390188
+          },
+          "system_cpu_seconds": {
+            "median": 0.053675999999999995,
+            "min": 0.053675999999999995,
+            "max": 0.053675999999999995
+          }
+        },
+        "jdk28_aot_source": {
+          "passed": true,
+          "successful_runs": 1,
+          "total_runs": 1,
+          "process_seconds": {
+            "median": 0.36635191598907113,
+            "min": 0.36635191598907113,
+            "max": 0.36635191598907113
+          },
+          "docker_start_to_exit_seconds": {
+            "median": 0.46624804100000006,
+            "min": 0.46624804100000006,
+            "max": 0.46624804100000006
+          },
+          "docker_create_to_exit_seconds": {
+            "median": 0.5157944989999983,
+            "min": 0.5157944989999983,
+            "max": 0.5157944989999983
+          },
+          "engine_container_seconds": {
+            "median": 0.413743,
+            "min": 0.413743,
+            "max": 0.413743
+          },
+          "peak_rss_bytes": {
+            "median": 151769088,
+            "min": 151769088,
+            "max": 151769088
+          },
+          "cgroup_memory_peak_bytes": {
+            "median": 124325888,
+            "min": 124325888,
+            "max": 124325888
+          },
+          "user_cpu_seconds": {
+            "median": 0.619429,
+            "min": 0.619429,
+            "max": 0.619429
+          },
+          "system_cpu_seconds": {
+            "median": 0.088196,
+            "min": 0.088196,
+            "max": 0.088196
+          }
+        }
+      }
+    }
+  },
+  "passed": true
+}

@@ -1,0 +1,9 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <parent><groupId>ch.so.agi.gretl.crema</groupId><artifactId>gretl-crema</artifactId><version>0.1.0-SNAPSHOT</version></parent>
+  <artifactId>crema-compiler</artifactId>
+  <dependencies>
+    <dependency><groupId>ch.so.agi.gretl.crema</groupId><artifactId>crema-runner</artifactId><version>${project.version}</version></dependency>
+    <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId><scope>test</scope></dependency>
+  </dependencies>
+</project>

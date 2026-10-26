@@ -1,0 +1,68 @@
+{
+  "binary_sha256_before": "77ad7a5c92bc7bdff24f843a7c47e98f3636d5eb82e51fdc768e2cee4929aaed",
+  "binary_sha256_after": "77ad7a5c92bc7bdff24f843a7c47e98f3636d5eb82e51fdc768e2cee4929aaed",
+  "binary_unchanged": true,
+  "passed": true,
+  "checks": [
+    {
+      "name": "java_class_loading",
+      "passed": true,
+      "seconds": 1.3794305
+    },
+    {
+      "name": "groovy_class_and_closure",
+      "passed": true,
+      "seconds": 0.06228270899999977
+    },
+    {
+      "name": "missing_entry_class",
+      "passed": true,
+      "seconds": 0.017977832999999777
+    },
+    {
+      "name": "invalid_cli",
+      "passed": true,
+      "seconds": 0.016908541999999915
+    },
+    {
+      "name": "gretl_parameter_and_predecessor",
+      "passed": true,
+      "seconds": 0.05387458299999981
+    },
+    {
+      "name": "gretl_sql_and_independent_jdbc",
+      "passed": true,
+      "seconds": 0.49464554199999977
+    },
+    {
+      "name": "jvm_native_equivalence",
+      "passed": true,
+      "seconds": 0.8807442080000003
+    },
+    {
+      "name": "external_sql_without_recompile",
+      "passed": true,
+      "seconds": 0.42615070800000066
+    },
+    {
+      "name": "second_job_compiled_after_native_build",
+      "passed": true,
+      "seconds": 0.7382359999999997
+    },
+    {
+      "name": "invalid_parameter",
+      "passed": true,
+      "seconds": 0.03692208299999944
+    },
+    {
+      "name": "missing_sql_file",
+      "passed": true,
+      "seconds": 0.06286745900000046
+    },
+    {
+      "name": "invalid_sql",
+      "passed": true,
+      "seconds": 0.04778983300000039
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source "$(dirname "$0")/../scripts/toolchain.sh"
+exec "$JAVA_HOME/bin/java" -cp "$CREMA_COMPILER_CP" ch.so.agi.gretl.crema.compiler.SourceMain "$@"

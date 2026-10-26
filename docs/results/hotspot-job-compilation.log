@@ -1,0 +1,10 @@
+225 1776       3       hotloop$_run_closure1$_closure2::doCall (26 bytes)
+226 1776       3       hotloop$_run_closure1$_closure2::doCall (26 bytes)   COMPILE SKIPPED: call site target change
+227 1811       3       hotloop$_run_closure1$_closure2::doCall (26 bytes)
+231 1833       4       hotloop$_run_closure1$_closure2::doCall (26 bytes)
+233 1811       3       hotloop$_run_closure1$_closure2::doCall (26 bytes)   made not entrant: not used
+242 1843 %     3       hotloop$_run_closure1::doCall @ 33 (118 bytes)
+243 1844       3       hotloop$_run_closure1::doCall (118 bytes)
+247 1843 %     3       hotloop$_run_closure1::doCall @ 33 (118 bytes)   made not entrant: C1 deoptimize for patching
+HOTLOOP_OK 326690737
+job.status=SUCCEEDED

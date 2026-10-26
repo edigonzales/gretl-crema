@@ -1,0 +1,243 @@
+{
+  "warmups_per_mode": 3,
+  "measured_processes_per_mode": 10,
+  "timing": "fresh process creation to exit, including job execution; warm filesystem caches; direct binaries, no shell",
+  "order": "paired rounds, rotated mode order each round",
+  "binaries": {
+    "interpreter": {
+      "bytes": 186735800,
+      "sha256": "98a9e682104574df14fe9656f4d9efbc678ad2159d97139d1e15f8959deeb225",
+      "build": {
+        "variant": "interpreter",
+        "build_seconds": 196,
+        "exit_code": 0
+      }
+    },
+    "ristretto": {
+      "bytes": 229879536,
+      "sha256": "6f9e1d8ddca3c9e05277297d7828350d785c7d8607949c2428c6e7be271e059d",
+      "build": {
+        "variant": "ristretto",
+        "build_seconds": 180,
+        "exit_code": 0
+      }
+    }
+  },
+  "workloads": {
+    "h2_demo": {
+      "parameter": "jahr=2026",
+      "expected_output": "SQL-Eintr\u00e4ge: 1",
+      "job_jar_sha256": "bfebd7255d3d1e391c7e299ddde42eb2539bdbc15b6eb7e6c056d5ac48f2aa4f",
+      "modes": {
+        "interpreter": {
+          "seconds": [
+            0.150772958000001,
+            0.09454070799999847,
+            0.09666054199999863,
+            0.1193952499999984,
+            0.10076837499999947,
+            0.09894337500000105,
+            0.15552566600000262,
+            0.10103962499999852,
+            0.09518249999999995,
+            0.11313083400000323
+          ],
+          "median_seconds": 0.100903999999999,
+          "min_seconds": 0.09454070799999847,
+          "max_seconds": 0.15552566600000262
+        },
+        "ristretto": {
+          "seconds": [
+            0.21542579099999948,
+            0.1428025419999983,
+            0.11502979099999955,
+            0.17814391699999987,
+            0.15440058299999926,
+            0.16171466699999826,
+            0.2407132919999988,
+            0.1606577499999986,
+            0.1478035420000019,
+            0.18999829200000207
+          ],
+          "median_seconds": 0.16118620849999843,
+          "min_seconds": 0.11502979099999955,
+          "max_seconds": 0.2407132919999988
+        },
+        "jvm_bytecode": {
+          "seconds": [
+            0.579987375,
+            0.584980250000001,
+            0.6645793749999989,
+            0.586757875,
+            0.6113951249999996,
+            0.6164923340000001,
+            0.5967291659999994,
+            0.5969110000000022,
+            0.6120572499999994,
+            0.657382958000003
+          ],
+          "median_seconds": 0.6041530625000009,
+          "min_seconds": 0.579987375,
+          "max_seconds": 0.6645793749999989
+        },
+        "jvm_source": {
+          "seconds": [
+            1.0018849579999989,
+            0.8664559999999994,
+            0.9018462920000001,
+            0.8864455829999986,
+            0.87370825,
+            0.8697025829999987,
+            0.9495510000000031,
+            0.909353540999998,
+            0.9486647500000025,
+            0.844259791999999
+          ],
+          "median_seconds": 0.8941459374999994,
+          "min_seconds": 0.844259791999999,
+          "max_seconds": 1.0018849579999989
+        }
+      },
+      "trace_log": "h2_demo-jit-trace.log",
+      "compiler_activity": {
+        "finished_compilations": 0,
+        "code_installations": 0,
+        "installed_code_bytes": 0,
+        "osr_installations": 0,
+        "job_closure_installations": []
+      },
+      "passed": true
+    },
+    "dynamic_groovy_hotloop": {
+      "parameter": "iterations=100000",
+      "expected_output": "HOTLOOP_OK 326690737",
+      "job_jar_sha256": "956bfc8cb987e7711136a34b271b60476199d4b58dba482f17f4cb935507443c",
+      "modes": {
+        "interpreter": {
+          "seconds": [
+            2.3588369160000013,
+            2.9040079999999975,
+            2.479523499999999,
+            2.2132517909999976,
+            2.305661916999995,
+            2.572798750000004,
+            2.4729892499999977,
+            4.251411457999993,
+            2.4530476249999964,
+            2.355916332999996
+          ],
+          "median_seconds": 2.463018437499997,
+          "min_seconds": 2.2132517909999976,
+          "max_seconds": 4.251411457999993
+        },
+        "ristretto": {
+          "seconds": [
+            1.60061125,
+            1.774163124999994,
+            1.5001290000000012,
+            1.4769986249999931,
+            1.531869915999991,
+            1.4775254580000023,
+            1.5559115000000077,
+            1.4219668749999954,
+            1.8333851249999924,
+            1.7928622090000061
+          ],
+          "median_seconds": 1.5438907079999993,
+          "min_seconds": 1.4219668749999954,
+          "max_seconds": 1.8333851249999924
+        },
+        "jvm_bytecode": {
+          "seconds": [
+            0.418975875000001,
+            0.3592677910000006,
+            0.4048471669999998,
+            0.3512638329999973,
+            0.415288541999999,
+            0.3484718750000013,
+            0.4317533340000068,
+            0.43964433300000394,
+            0.4364832499999949,
+            0.4584362089999985
+          ],
+          "median_seconds": 0.4171322085,
+          "min_seconds": 0.3484718750000013,
+          "max_seconds": 0.4584362089999985
+        },
+        "jvm_source": {
+          "seconds": [
+            0.6680364999999995,
+            0.6790217909999967,
+            0.7935261249999996,
+            0.6655225830000049,
+            0.6946415419999994,
+            0.6819067920000066,
+            0.8829938749999968,
+            0.9336509590000048,
+            0.6265215829999988,
+            0.7203545419999955
+          ],
+          "median_seconds": 0.688274167000003,
+          "min_seconds": 0.6265215829999988,
+          "max_seconds": 0.9336509590000048
+        }
+      },
+      "trace_log": "dynamic_groovy_hotloop-jit-trace.log",
+      "compiler_activity": {
+        "finished_compilations": 36,
+        "code_installations": 36,
+        "installed_code_bytes": 28608,
+        "osr_installations": 1,
+        "job_closure_installations": [
+          "[Ristretto CodeMap] method=hotloop$_run_closure1$_closure2.doCall(long) entryBCI=-1 start=0x70000f8000 end=0x70000f8aec entry=0x70000f8000 size=2796",
+          "[Ristretto CodeMap] method=hotloop$_run_closure1.doCall(Object) entryBCI=33 start=0x7000100000 end=0x7000100e80 entry=0x7000100000 size=3712"
+        ]
+      },
+      "passed": true
+    }
+  },
+  "jvm": {
+    "java": "/Users/stefan/sources/gretl-crema/.tools/jdk-25.0.4.1+1/Contents/Home/bin/java",
+    "settings": [
+      "bool TieredCompilation                        = true                                   {pd product} {default}",
+      "bool UseCompiler                              = true                                      {product} {default}",
+      "openjdk version \"25.0.4.1\" 2026-08-18 LTS",
+      "OpenJDK Runtime Environment Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS)",
+      "OpenJDK 64-Bit Server VM Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS, mixed mode, sharing)"
+    ],
+    "flags": [],
+    "startup_included": true,
+    "source_compilation_included_in_source_mode": true
+  },
+  "runtime_jar_sha256": {
+    "crema-runner/target/crema-runner-0.1.0-SNAPSHOT.jar": "51ebca091321ef3b7136265607513ba526d2631f3b0ee1be6505b357d90a0d56",
+    "crema-compiler/target/crema-compiler-0.1.0-SNAPSHOT.jar": "5f09080f16c7c6bcd572cfc277f1d63d5c6e69e7cb4cb328de0e9a931d824beb",
+    "crema-runner/target/lib/crema-core-0.1.0-SNAPSHOT.jar": "2527cdb95e32a6b3c9a82c37064ee5b9fafacd1fd1040e850910cf94e2290dd0",
+    "crema-runner/target/lib/groovy-6.0.0.jar": "6bcbec490ac1ade0dca6566dca9d02897cbb8fc31ee4008e950451aa83b1ac76",
+    "crema-runner/target/lib/h2-2.3.232.jar": "8dae62d22db8982c3dcb3826edb9c727c5d302063a67eef7d63d82de401f07d3"
+  },
+  "binary_hashes_unchanged": true,
+  "passed": true,
+  "jvm_compilation_diagnostic": {
+    "separate_from_timing": true,
+    "job_lines": [
+      "225 1776       3       hotloop$_run_closure1$_closure2::doCall (26 bytes)",
+      "226 1776       3       hotloop$_run_closure1$_closure2::doCall (26 bytes)   COMPILE SKIPPED: call site target change",
+      "227 1811       3       hotloop$_run_closure1$_closure2::doCall (26 bytes)",
+      "231 1833       4       hotloop$_run_closure1$_closure2::doCall (26 bytes)",
+      "233 1811       3       hotloop$_run_closure1$_closure2::doCall (26 bytes)   made not entrant: not used",
+      "242 1843 %     3       hotloop$_run_closure1::doCall @ 33 (118 bytes)",
+      "243 1844       3       hotloop$_run_closure1::doCall (118 bytes)",
+      "247 1843 %     3       hotloop$_run_closure1::doCall @ 33 (118 bytes)   made not entrant: C1 deoptimize for patching",
+      "HOTLOOP_OK 326690737",
+      "job.status=SUCCEEDED"
+    ],
+    "c2_job_compilation_observed": true
+  },
+  "independent_h2_check": {
+    "passed": true,
+    "year": 2026,
+    "fixture_bytes": 17,
+    "matching_rows": 1
+  }
+}

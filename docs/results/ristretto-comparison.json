@@ -1,0 +1,167 @@
+{
+  "warmups_per_mode": 3,
+  "measured_processes_per_mode": 10,
+  "timing": "fresh process creation to exit, including job execution; warm filesystem caches; direct binaries, no shell",
+  "order": "paired rounds, rotated mode order each round",
+  "binaries": {
+    "interpreter": {
+      "bytes": 186735800,
+      "sha256": "98a9e682104574df14fe9656f4d9efbc678ad2159d97139d1e15f8959deeb225",
+      "build": {
+        "variant": "interpreter",
+        "build_seconds": 196,
+        "exit_code": 0
+      }
+    },
+    "ristretto": {
+      "bytes": 229879536,
+      "sha256": "6f9e1d8ddca3c9e05277297d7828350d785c7d8607949c2428c6e7be271e059d",
+      "build": {
+        "variant": "ristretto",
+        "build_seconds": 180,
+        "exit_code": 0
+      }
+    }
+  },
+  "workloads": {
+    "h2_demo": {
+      "parameter": "jahr=2026",
+      "expected_output": "SQL-Eintr\u00e4ge: 1",
+      "job_jar_sha256": "18e1912acb936c3309b42619e263c77f45ed79675a2cfe39b802cabd35eff245",
+      "modes": {
+        "interpreter": {
+          "seconds": [
+            0.0759560829999999,
+            0.132061459,
+            0.1457637909999998,
+            0.07866487499999986,
+            0.12861687500000007,
+            0.1537044999999999,
+            0.07751133400000043,
+            0.1254324999999996,
+            0.14833891599999927,
+            0.07645541599999994
+          ],
+          "median_seconds": 0.12702468749999984,
+          "min_seconds": 0.0759560829999999,
+          "max_seconds": 0.1537044999999999
+        },
+        "ristretto": {
+          "seconds": [
+            0.15324579199999988,
+            0.08060029199999974,
+            0.13559179200000004,
+            0.15367970899999994,
+            0.0813583750000002,
+            0.13701420800000008,
+            0.15333020799999986,
+            0.08146287499999971,
+            0.13199312500000016,
+            0.15229783399999963
+          ],
+          "median_seconds": 0.13630300000000006,
+          "min_seconds": 0.08060029199999974,
+          "max_seconds": 0.15367970899999994
+        },
+        "ristretto_jit_disabled": {
+          "seconds": [
+            0.13303924999999994,
+            0.15242099999999992,
+            0.07885300000000006,
+            0.13273575000000015,
+            0.1519196250000001,
+            0.08297795799999985,
+            0.1340937500000008,
+            0.14499862500000038,
+            0.07487033399999987,
+            0.133772875
+          ],
+          "median_seconds": 0.13340606249999998,
+          "min_seconds": 0.07487033399999987,
+          "max_seconds": 0.15242099999999992
+        }
+      },
+      "trace_log": "h2_demo-jit-trace.log",
+      "compiler_activity": {
+        "finished_compilations": 0,
+        "code_installations": 0,
+        "installed_code_bytes": 0,
+        "osr_installations": 0,
+        "job_closure_installations": []
+      },
+      "passed": true
+    },
+    "dynamic_groovy_hotloop": {
+      "parameter": "iterations=100000",
+      "expected_output": "HOTLOOP_OK 326690737",
+      "job_jar_sha256": "e80d460a08d2ac423c42960e097495c82539463c9b874b6abd443d1ec63dd879",
+      "modes": {
+        "interpreter": {
+          "seconds": [
+            2.118205332999999,
+            2.1184165419999985,
+            2.284621209000001,
+            2.635936665999999,
+            2.0451830410000014,
+            2.07893825,
+            2.070265207999995,
+            2.5038064579999997,
+            2.1431469580000027,
+            2.0459299160000057
+          ],
+          "median_seconds": 2.1183109374999987,
+          "min_seconds": 2.0451830410000014,
+          "max_seconds": 2.635936665999999
+        },
+        "ristretto": {
+          "seconds": [
+            1.3800929999999987,
+            1.3138718750000002,
+            1.8176889159999945,
+            1.674171916000006,
+            1.3850457500000033,
+            1.4137513330000004,
+            1.4383673750000057,
+            1.3793307079999977,
+            1.40019925,
+            1.2880655409999946
+          ],
+          "median_seconds": 1.3926225000000017,
+          "min_seconds": 1.2880655409999946,
+          "max_seconds": 1.8176889159999945
+        },
+        "ristretto_jit_disabled": {
+          "seconds": [
+            2.005351042000001,
+            2.0951584590000003,
+            2.0605645420000016,
+            2.4265587080000017,
+            2.083708958999999,
+            2.107598166999999,
+            2.7321953749999963,
+            2.0842291670000037,
+            2.437218042000012,
+            2.0653998340000044
+          ],
+          "median_seconds": 2.089693813000002,
+          "min_seconds": 2.005351042000001,
+          "max_seconds": 2.7321953749999963
+        }
+      },
+      "trace_log": "dynamic_groovy_hotloop-jit-trace.log",
+      "compiler_activity": {
+        "finished_compilations": 36,
+        "code_installations": 36,
+        "installed_code_bytes": 28608,
+        "osr_installations": 1,
+        "job_closure_installations": [
+          "[Ristretto CodeMap] method=hotloop$_run_closure1$_closure2.doCall(long) entryBCI=-1 start=0x7000110000 end=0x7000110aec entry=0x7000110000 size=2796",
+          "[Ristretto CodeMap] method=hotloop$_run_closure1.doCall(Object) entryBCI=33 start=0x7000118000 end=0x7000118e80 entry=0x7000118000 size=3712"
+        ]
+      },
+      "passed": true
+    }
+  },
+  "binary_hashes_unchanged": true,
+  "passed": true
+}
